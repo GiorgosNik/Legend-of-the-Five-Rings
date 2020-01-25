@@ -13,3 +13,8 @@ cout<<"Item created"<<endl;
 Green::~Green(){
 	cout<<"Item deleted"<<endl;	
 }
+Katana::Katana(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectCost,int givenDurability)
+:Item(givenName)
+{
+	
+}

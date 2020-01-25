@@ -8,3 +8,23 @@ class Item:public Green{
 		Item(const Item& Copy);
 		~Item();
 };
+class Katana:public Item{
+	public:
+		Katana(string givenName);
+};
+class Spear:public Item{
+	public:
+		Spear(string givenName);
+};
+class Bow:public Item{
+	public:
+		Bow(string givenName);
+};
+class Ninjato:public Item{
+	public:
+		Ninjato(string givenName);
+};
+class Wakizashi:public Item{
+	public:
+		Wakizashi(string givenName);
+};
