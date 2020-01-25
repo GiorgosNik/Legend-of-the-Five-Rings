@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = DeckBuilder.o Core.o
-LINKOBJ  = DeckBuilder.o Core.o
+OBJ      = Core.o DeckBuilder.o Card.o Green.o Item.o
+LINKOBJ  = Core.o DeckBuilder.o Card.o Green.o Item.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -24,8 +24,17 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-DeckBuilder.o: DeckBuilder.c
-	$(CPP) -c DeckBuilder.c -o DeckBuilder.o $(CXXFLAGS)
-
 Core.o: Core.cpp
 	$(CPP) -c Core.cpp -o Core.o $(CXXFLAGS)
+
+DeckBuilder.o: DeckBuilder.cpp
+	$(CPP) -c DeckBuilder.cpp -o DeckBuilder.o $(CXXFLAGS)
+
+Card.o: Card.cpp
+	$(CPP) -c Card.cpp -o Card.o $(CXXFLAGS)
+
+Green.o: Green.cpp
+	$(CPP) -c Green.cpp -o Green.o $(CXXFLAGS)
+
+Item.o: Item.cpp
+	$(CPP) -c Item.cpp -o Item.o $(CXXFLAGS)

@@ -2,14 +2,14 @@
 
 using namespace std;
 
-DeckBuilder::DeckBuilder()
+DeckBuilder::DeckBuilder()	//DeckBuilder Constructor
 {
 	black = new list<BlackCard *>();
 	green = new list<GreenCard *>();
 	srand(unsigned(time(NULL)));
 }
 
-DeckBuilder::~DeckBuilder()
+DeckBuilder::~DeckBuilder()	//DeckBuilder Destructor
 {
 	list<BlackCard *>::iterator it;
 	list<GreenCard *>::iterator it2;
@@ -29,7 +29,7 @@ DeckBuilder::~DeckBuilder()
 	delete green;
 }
 
-list<GreenCard *> *DeckBuilder::createFateDeck()
+list<GreenCard *> *DeckBuilder::createFateDeck()	//These Populate the Decks using the custom class Constructors with string arg
 {
 	int i;
 	for (i = 0; i < NO_FOOTSOLDIER; i++)
