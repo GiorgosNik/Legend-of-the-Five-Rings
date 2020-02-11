@@ -1,4 +1,4 @@
-#include "Item.h"
+#include "Item.hpp"
 using namespace std;
 Item::Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,givenEffectCost,int givenDurability)
 :Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenTextm,givenEffectCost,givenDurability),durability(givenDurability)
@@ -13,8 +13,4 @@ cout<<"Item created"<<endl;
 Green::~Green(){
 	cout<<"Item deleted"<<endl;	
 }
-Katana::Katana(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectCost,int givenDurability)
-:Item(givenName)
-{
-	
-}
+

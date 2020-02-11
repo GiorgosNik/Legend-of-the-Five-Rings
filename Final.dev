@@ -81,16 +81,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=Card.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit5]
 FileName=Card.cpp
 CompileCpp=1
 Folder=
@@ -100,17 +90,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
-FileName=Green.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit7]
+[Unit5]
 FileName=Green.cpp
 CompileCpp=1
 Folder=
@@ -120,8 +100,28 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit6]
+FileName=Item.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=Card.hpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 [Unit8]
-FileName=Item.h
+FileName=Green.hpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -131,7 +131,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=Item.cpp
+FileName=Item.hpp
 CompileCpp=1
 Folder=
 Compile=1
