@@ -4,9 +4,9 @@ class Item:public Green{
 	private:
 		int durability;
 	public:
-		Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectCost,int givenDurability);
-		Item(const Item& Copy);
-		~Item();
+		Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectBonus,int givenEffectCost,int givenDurability);
+	virtual	Item(const Item& Copy);
+	virtual	~Item();
 };
 class Katana:public Item{
 	public:

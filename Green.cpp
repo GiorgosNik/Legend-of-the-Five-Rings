@@ -1,6 +1,6 @@
 #include "Green.hpp"
 using namespace std;
-Green::Greenstring givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,givenEffectCost)
+Green::Green(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,givenEffectCost)
 :Card(givenName,givenCost),attackBonus(givenAttBonus),deffenceBonus(givenDefBonus),minimumHonnor(givenMinHonnor),cardText(givenText),effectCost(givenEffectCost){	
 cout<<"Green Card just created"<<endl;
 }
