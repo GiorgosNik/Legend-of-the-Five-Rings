@@ -1,3 +1,5 @@
+#ifndef CARD
+#define CARD
 #include <iostream>
 using namespace std;
 
@@ -12,3 +14,4 @@ class Card{
 		virtual	~Card();	//To be used for debuging messages ONLY!!!
 		int getCost();
 };
+#endif //CARD

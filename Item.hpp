@@ -1,3 +1,5 @@
+#ifndef ITEM
+#define ITEM
 #include "Green.hpp"
 using namespace std;
 class Item:public Green{
@@ -28,3 +30,4 @@ class Wakizashi:public Item{
 	public:
 		Wakizashi(string givenName);
 };
+#endif //ITEM

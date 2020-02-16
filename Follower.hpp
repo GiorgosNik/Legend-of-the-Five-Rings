@@ -1,3 +1,5 @@
+#ifndef FOLLOWER
+#define FOLLOWER
 #include "Greem.hpp"
 class Follower:public Green{
 	public:
@@ -29,4 +31,4 @@ class Bushido:public Follower{
 	public:
 		Bushido(string GivenName);
 };
-//GUARDS
+#endif //FOLLOWER

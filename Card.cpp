@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Card::Card(int givenConst, string givenName):Cost(givenCost), Name(givenCost),isTapped(false){
+Card::Card(int givenCost, string givenName):Cost(givenCost), Name(givenCost),isTapped(false){
 	cout<<"Card: "<< Name<<" just created!"<<endl;	//Comment out
 }
 Card::Card(const Card& Copy)Name(Copy.Name),Cost(Copy.Cost),isTapped(Copy.isTapped){

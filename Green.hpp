@@ -1,3 +1,5 @@
+#ifndef GREEN
+#define GREEN
 #include "Card.hpp"
 using namespace std;
 class Green: public Card{
@@ -14,3 +16,4 @@ class Green: public Card{
 	int geteffectCost();
 	void effectBonus();
 };
+#endif //GREEN
