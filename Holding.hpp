@@ -6,7 +6,7 @@ using namespace std;
 class Holding:public Black{
 int harvestValue;
 Holding* upperHolding;
-Holding* subHolding;
+Holding* lowerHolding;
 public:
 Holding(int givenCost,string GivenName,int Harvest);
 Holding(const Holding& Copy);
@@ -15,9 +15,9 @@ void giveUpper(Holding* givenHold);
 void giveLow(Holding* givenHold);
 int getHarvestValue();
 };
-class Giftsandfavour:public Holding{
+class GiftsandFavour:public Holding{
 	public:
-		Giftsandfavour(int givenCost,string GivenName);
+		GiftsandFavour(string GivenName);
 };
 class Plain:public Holding{
 	public:
@@ -33,7 +33,7 @@ class Mine:public Holding{
 };
 class GoldMine:public Holding{
 	public:
-		GodlMine(string GivenName);
+		GoldMine(string GivenName);
 };
 class CrystalMine:public Holding{
 	public:

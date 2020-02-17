@@ -20,7 +20,7 @@ void Holding::giveLow(Holding* givenHold){
 int Holding::getHarvestValue(){
 	return harvestValue;
 }
-Giftsandfavour::Giftsandfavour(string GivenName):Holding(2,GivenName,2){}
+GiftsandFavour::GiftsandFavour(string GivenName):Holding(2,GivenName,2){}
 Plain::Plain(string GivenName):Holding(2,GivenName,2){}
 Farmland::Farmland(string GivenName):Holding(3,GivenName,4){}
 Mine::Mine(string GivenName):Holding(5,GivenName,3){}

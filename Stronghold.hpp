@@ -1,6 +1,6 @@
 #ifndef STRONGHOLD
 #define STRONGHOLD
-#include <streamio>
+#include <iostream>
 #include "Holding.hpp"
 using namespace std;
 class Stronghold:public Holding{

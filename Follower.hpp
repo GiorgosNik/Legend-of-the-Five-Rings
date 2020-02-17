@@ -3,11 +3,11 @@
 #include "Green.hpp"
 class Follower:public Green{
 	public:
-	Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectCost);
+	Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost);
 	Follower(const Follower& Copy);
 virtual	~Follower();
 };
-class Footsodlier:public Follower{
+class Footsoldier:public Follower{
 	public:
 		Footsoldier(string GivenName);
 };
@@ -23,9 +23,9 @@ class Cavalry:public Follower{
 	public:
 		Cavalry(string GivenName);
 };
-class Naval:public Follower{
+class Atakebune:public Follower{
 	public:
-		Naval(string GivenName);
+		Atakebune(string GivenName);
 };
 class Bushido:public Follower{
 	public:

@@ -1,6 +1,7 @@
 #ifndef PERSONALITY
 #define PERSONALITY
 #include <iostream>
+#include <vector>
 #include "Black.hpp"
 #include "Follower.hpp"
 #include "Item.hpp"

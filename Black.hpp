@@ -6,7 +6,7 @@ using namespace std;
 class Black:public Card{
 	bool isRevealed;
 	public:
-		Black(string GivenName,int givenCost);
+		Black(int givenCost,string givenName);
 		Black(const Black& Copy);
 		~Black();
 		bool getIsRevealed();

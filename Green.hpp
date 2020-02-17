@@ -9,11 +9,12 @@ class Green: public Card{
 		int minimumHonnor;
 		string cardText;
 		int effectCost;
+		int effectBonus;
 	public:
-	Green(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectCost);
+	Green(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEfectBonus,int givenEffectCost);
 	Green(const Green& Copy);
 	~Green();
-	int geteffectCost();
-	void effectBonus();
+	int getEffectCost();
+	void giveBonus();
 };
 #endif //GREEN
