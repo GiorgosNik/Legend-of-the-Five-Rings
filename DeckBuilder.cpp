@@ -19,7 +19,7 @@ DeckBuilder::~DeckBuilder()	//DeckBuilder Destructor
 		delete *it;
 		it = black->begin();
 	}
-	for (it2 = green->begin(); it2 != green->end(); it++)
+	for (it2 = green->begin(); it2 != green->end(); it2++)
 	{
 		green->remove((*it2));
 		delete *it2;
