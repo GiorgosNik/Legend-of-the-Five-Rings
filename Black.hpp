@@ -1,3 +1,5 @@
+#ifndef BLACK
+#define BLACK
 #include <iostream>
 #include "Card.hpp"
 using namespace std;
@@ -9,3 +11,4 @@ class Black:public Card{
 		~Black();
 		bool getIsRevealed();
 };
+#endif		//BLACK

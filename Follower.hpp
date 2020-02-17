@@ -1,11 +1,11 @@
 #ifndef FOLLOWER
 #define FOLLOWER
-#include "Greem.hpp"
+#include "Green.hpp"
 class Follower:public Green{
 	public:
 	Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectCost);
-virtual	Follower(const Follower& Copy);
-virtual	~Follower()
+	Follower(const Follower& Copy);
+virtual	~Follower();
 };
 class Footsodlier:public Follower{
 	public:

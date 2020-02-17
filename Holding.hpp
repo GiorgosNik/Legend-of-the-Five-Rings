@@ -1,3 +1,5 @@
+#ifndef HOLDING
+#define HOLDING
 #include <iostream>
 #include "Black.hpp"
 using namespace std;
@@ -6,7 +8,7 @@ int harvestValue;
 Holding* upperHolding;
 Holding* subHolding;
 public:
-Holding(,int givenCost,string GivenName,int Harvest);
+Holding(int givenCost,string GivenName,int Harvest);
 Holding(const Holding& Copy);
 ~Holding();
 void giveUpper(Holding* givenHold);
@@ -37,4 +39,4 @@ class CrystalMine:public Holding{
 	public:
 		CrystalMine(string GivenName);
 };
-
+#endif		//HOLDING
