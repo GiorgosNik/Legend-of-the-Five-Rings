@@ -19,6 +19,7 @@ int Item::getType(){
 void Item::print(){
 	cout<<"Durability: "<<durability;
 }
+
 Katana::Katana(string GivenName):Item(GivenName,0,2,0,1,"SAMPLETEXT",1,2,3){}
 Spear::Spear(string GivenName):Item(GivenName,0,0,2,1,"SAMPLETEXT",1,2,3){}
 Bow::Bow(string GivenName):Item(GivenName,2,2,2,2,"SAMPLETEXT",3,4,5){}

@@ -7,7 +7,7 @@ class Follower:public Green{
 	Follower(const Follower& Copy);
 	virtual	~Follower();
 	int getType();
-virtual	void print();
+	virtual	void print();
 };
 class Footsoldier:public Follower{
 	public:

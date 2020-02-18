@@ -15,7 +15,7 @@ class Holding:public Black{
 		void giveLow(Holding* givenHold);
 		int getHarvestValue();
 		int getType();
-		void print();
+		virtual void print();
 };
 class GiftsandFavour:public Holding{
 	public:

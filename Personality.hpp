@@ -25,7 +25,7 @@ class Personality:public Black{
 		void giveItem(Item& toGive);
 		void giveFollower(Follower& toGive);
 		int getType();
-		void print();
+		virtual void print();
 };
 class Attacker:public Personality{
 	public:

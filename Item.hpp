@@ -10,7 +10,7 @@ class Item:public Green{
 		Item(const Item& Copy);
 		virtual	~Item();
 		int getType();
-		void print();
+		virtual void print();
 };
 class Katana:public Item{
 	public:

@@ -16,7 +16,16 @@ int Green::getEffectCost(){
 	return effectCost;
 }
 void Green::giveBonus(){
-	//What do we do?
+	attackBonus=attackBonus+effectBonus;
+	defenceBonus=defenceBonus+effectBonus;
+	effectBonus=0;
+	effectCost=0;
+}
+int Green::getAttackBonus(){
+	return attackBonus;
+}
+int Green::getDefenceBonus(){
+	return defenceBonus;
 }
 void Green::print(){
 	cout<<"Attack Bonus: "<<attackBonus<<" Defence Bonus: "<<defenceBonus<<" Minimum Honour: "<<minimumHonnor<<" Text:"<<cardText<<" Effect Cost: "<<effectCost<<" Effect Bonus"<<effectBonus<<endl;
