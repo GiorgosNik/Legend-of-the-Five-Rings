@@ -2,7 +2,7 @@
 #define CARD
 #include <iostream>
 using namespace std;
-
+enum types{PERSONALITY = 1, HOLDING = 2, FOLLOWER = 3, ITEM = 4};
 class Card{
 	private:
 		int Cost;

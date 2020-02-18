@@ -1,5 +1,5 @@
-#ifndef PERSONALITY
-#define PERSONALITY
+#ifndef PERSONALITYG
+#define PERSONALITYG
 #include <iostream>
 #include <vector>
 #include "Black.hpp"
@@ -24,6 +24,7 @@ class Personality:public Black{
 		void setDeath();
 		void giveItem(Item& toGive);
 		void giveFollower(Follower& toGive);
+		int getType();
 };
 class Attacker:public Personality{
 	public:
@@ -45,4 +46,4 @@ class Shogun:public Personality{
 	public:
 		Shogun(string GivenName);
 };
-#endif		//PERSONALITY
+#endif		//PERSONALITYG

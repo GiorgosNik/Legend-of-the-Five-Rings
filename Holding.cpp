@@ -11,6 +11,9 @@ Holding::~Holding(){
 		delete lowerHolding;
 	}
 }
+int Holding::getType(){
+	return HOLDING;
+}
 void Holding::giveUpper(Holding* givenHold){
 	upperHolding=givenHold;
 }

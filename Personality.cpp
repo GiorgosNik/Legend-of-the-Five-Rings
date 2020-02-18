@@ -27,6 +27,9 @@ void Personality::giveItem(Item& toGive){
 void Personality::giveFollower(Follower& toGive){
 	Retinue.push_back(toGive);
 }
+int Personality::getType(){
+	return PERSONALITY;
+}
 Attacker::Attacker(string GivenName):Personality(5,GivenName,3,2,2){}
 Defender::Defender(string GivenName):Personality(5,GivenName,2,3,2){}
 Shogun::Shogun(string GivenName):Personality(15,GivenName,10,5,8){}

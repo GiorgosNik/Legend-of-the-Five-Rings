@@ -1,11 +1,12 @@
-#ifndef FOLLOWER
-#define FOLLOWER
+#ifndef FOLLOWERG
+#define FOLLOWERG
 #include "Green.hpp"
 class Follower:public Green{
 	public:
 	Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost);
 	Follower(const Follower& Copy);
-virtual	~Follower();
+	virtual	~Follower();
+	int getType();	
 };
 class Footsoldier:public Follower{
 	public:
@@ -31,4 +32,4 @@ class Bushido:public Follower{
 	public:
 		Bushido(string GivenName);
 };
-#endif //FOLLOWER
+#endif //FOLLOWERG

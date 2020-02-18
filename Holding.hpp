@@ -1,19 +1,20 @@
-#ifndef HOLDING
-#define HOLDING
+#ifndef HOLDINGG
+#define HOLDINGG
 #include <iostream>
 #include "Black.hpp"
 using namespace std;
 class Holding:public Black{
-int harvestValue;
-Holding* upperHolding;
-Holding* lowerHolding;
-public:
-Holding(int givenCost,string GivenName,int Harvest);
-Holding(const Holding& Copy);
-~Holding();
-void giveUpper(Holding* givenHold);
-void giveLow(Holding* givenHold);
-int getHarvestValue();
+		int harvestValue;
+		Holding* upperHolding;
+		Holding* lowerHolding;
+	public:
+		Holding(int givenCost,string GivenName,int Harvest);
+		Holding(const Holding& Copy);
+		~Holding();
+		void giveUpper(Holding* givenHold);
+		void giveLow(Holding* givenHold);
+		int getHarvestValue();
+		int getType();
 };
 class GiftsandFavour:public Holding{
 	public:
@@ -39,4 +40,4 @@ class CrystalMine:public Holding{
 	public:
 		CrystalMine(string GivenName);
 };
-#endif		//HOLDING
+#endif		//HOLDINGG

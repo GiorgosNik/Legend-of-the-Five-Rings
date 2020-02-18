@@ -1,5 +1,5 @@
-#ifndef ITEM
-#define ITEM
+#ifndef ITEMG
+#define ITEMG
 #include "Green.hpp"
 using namespace std;
 class Item:public Green{
@@ -7,8 +7,9 @@ class Item:public Green{
 		int durability;
 	public:
 		Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectBonus,int givenEffectCost,int givenDurability);
-	Item(const Item& Copy);
-	virtual	~Item();
+		Item(const Item& Copy);
+		virtual	~Item();
+		int getType();
 };
 class Katana:public Item{
 	public:
@@ -30,4 +31,4 @@ class Wakizashi:public Item{
 	public:
 		Wakizashi(string givenName);
 };
-#endif //ITEM
+#endif //ITEMG

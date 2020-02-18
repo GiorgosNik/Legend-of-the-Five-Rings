@@ -4,6 +4,9 @@ using namespace std;
 Follower::Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost):Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenText,givenEffectBonus,givenEffectCost){}
 Follower::Follower(const Follower& Copy):Green(Copy){}
 Follower::~Follower(){}
+int Follower::getType(){
+	return FOLLOWER;
+}
 Footsoldier::Footsoldier(string GivenName):Follower(GivenName,0,2,0,1,"SAMPLETEXT",1,2){}
 Archer::Archer(string GivenName):Follower(GivenName,0,0,2,1,"SAMPLETEXT",1,2){}
 Sieger::Sieger(string GivenName):Follower(GivenName,5,3,3,2,"SAMPLETEXT",2,3){}
