@@ -11,6 +11,12 @@ Holding::~Holding(){
 		delete lowerHolding;
 	}
 }
+Holding* Holding::getLowerHolding(){
+	return lowerHolding;
+}
+Holding* Holding::getUpperHolding(){
+	return upperHolding;
+}
 int Holding::getType(){
 	return HOLDING;
 }
@@ -79,4 +85,34 @@ void CrystalMine::print(){
 	Black::print();
 	Holding::print();
 	cout<<endl;
+}
+int Mine::getHarvestValue(){
+	if(getUpperHolding()!=NULL){
+		return (Holding::getHarvestValue()+2);
+	}else{
+		return Holding::getHarvestValue();
+	}
+}
+int GoldMine::getHarvestValue(){
+	int rez=Holding::getHarvestValue();
+	if(getLowerHolding()!=NULL){
+		rez+=4;
+	}
+	if(getUpperHolding()!=NULL){
+		rez+=5;
+	}
+	if(getLowerHolding()!=NULL&&getUpperHolding()!=NULL){
+		rez+=Holding::getHarvestValue()*2;
+	}
+	return rez;
+}
+int CrystalMine::getHarvestValue(){
+	int rez=Holding::getHarvestValue();
+	if(getLowerHolding()!=NULL){
+		rez+=Holding::getHarvestValue();
+		if(getLowerHolding()->getLowerHolding()!=NULL){
+			rez+=Holding::getHarvestValue();
+		}
+	}
+	return rez;
 }

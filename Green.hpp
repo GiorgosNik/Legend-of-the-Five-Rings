@@ -19,5 +19,6 @@ class Green: public Card{
 	int getDefenceBonus();
 	int getAttackBonus();
 	virtual void print();
+	virtual int getType()=0;
 };
 #endif //GREEN

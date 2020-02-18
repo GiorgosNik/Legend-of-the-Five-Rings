@@ -1,18 +1,10 @@
 #include "Item.hpp"
 using namespace std;
 Item::Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectBonus,int givenEffectCost,int givenDurability)
-:Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenTextm,givenEffectBonus,givenEffectCost),durability(givenDurability)
-{
-cout<<"Item created"<<endl;	
-}
+:Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenTextm,givenEffectBonus,givenEffectCost),durability(givenDurability){}
 Item::Item(const Item& Copy)
-:Green(Copy),durability(Copy.durability)
-{
-cout<<"Item created"<<endl;	
-}
-Item::~Item(){
-	cout<<"Item deleted"<<endl;	
-}
+:Green(Copy),durability(Copy.durability){}
+Item::~Item(){}
 int Item::getType(){
 	return ITEM;
 }

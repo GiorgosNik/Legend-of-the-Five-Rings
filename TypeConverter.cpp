@@ -2,7 +2,7 @@
 
 TypeConverter::TypeConverter() {}
 
-void TypeConverter::getCorrectType(BlackCard *card, Personality **person, Holding **hold)
+void TypeConverter::getCorrectType(Black *card, Personality **person, Holding **hold)
 {
 	if (card->getType() == PERSONALITY) {
 		(*person) = getPersonality(card);
@@ -14,7 +14,7 @@ void TypeConverter::getCorrectType(BlackCard *card, Personality **person, Holdin
 	}
 }
 
-void TypeConverter::getCorrectType(GreenCard *card, Follower **follow, Item **item)
+void TypeConverter::getCorrectType(Green *card, Follower **follow, Item **item)
 {
 	if (card->getType() == FOLLOWER) {
 		(*follow) = getFollower(card);
@@ -26,28 +26,28 @@ void TypeConverter::getCorrectType(GreenCard *card, Follower **follow, Item **it
 	}
 }
 
-Personality *TypeConverter::getPersonality(BlackCard *d)
+Personality *TypeConverter::getPersonality(Black *d)
 {
 	if (d->getType() == PERSONALITY)
 		return (Personality *)d;
 	return NULL;
 }
 
-Holding *TypeConverter::getHolding(BlackCard *d)
+Holding *TypeConverter::getHolding(Black *d)
 {
 	if (d->getType() == HOLDING)
 		return (Holding *)d;
 	return NULL;
 }
 
-Follower *TypeConverter::getFollower(GreenCard *d)
+Follower *TypeConverter::getFollower(Green *d)
 {
 	if (d->getType() == FOLLOWER)
 		return (Follower *)d;
 	return NULL;
 }
 
-Item *TypeConverter::getItem(GreenCard *d)
+Item *TypeConverter::getItem(Green *d)
 {
 	if (d->getType() == ITEM)
 		return (Item *)d;

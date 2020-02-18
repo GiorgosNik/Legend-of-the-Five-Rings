@@ -13,7 +13,9 @@ class Holding:public Black{
 		~Holding();
 		void giveUpper(Holding* givenHold);
 		void giveLow(Holding* givenHold);
-		int getHarvestValue();
+		virtual int getHarvestValue();
+		Holding* getLowerHolding();
+		Holding* getUpperHolding();
 		int getType();
 		virtual void print();
 };
@@ -35,16 +37,19 @@ class Farmland:public Holding{
 class Mine:public Holding{
 	public:
 		Mine(string GivenName);
+		int getHarvestValue();
 		void print();
 };
 class GoldMine:public Holding{
 	public:
 		GoldMine(string GivenName);
+		int getHarvestValue();
 		void print();
 };
 class CrystalMine:public Holding{
 	public:
 		CrystalMine(string GivenName);
+		int getHarvestValue();
 		void print();
 };
 #endif		//HOLDINGG

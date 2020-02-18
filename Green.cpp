@@ -1,17 +1,10 @@
 #include "Green.hpp"
 using namespace std;
 Green::Green(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost)
-:Card(givenCost,givenName),attackBonus(givenAttBonus),defenceBonus(givenDefBonus),minimumHonnor(givenMinHonnor),cardText(givenText),effectBonus(givenEffectBonus),effectCost(givenEffectCost){	
-cout<<"Green Card just created"<<endl;
-}
+:Card(givenCost,givenName),attackBonus(givenAttBonus),defenceBonus(givenDefBonus),minimumHonnor(givenMinHonnor),cardText(givenText),effectBonus(givenEffectBonus),effectCost(givenEffectCost){}
 Green::Green(const Green& Copy)
-:Card(Copy),attackBonus(Copy.attackBonus),defenceBonus(Copy.defenceBonus),minimumHonnor(Copy.minimumHonnor),cardText(Copy.cardText),effectCost(Copy.effectCost)	
-{
-cout<<"Green Card just created"<<endl;
-}
-Green::~Green(){
-	cout<<"Green Card just destroyed"<<endl;
-}
+:Card(Copy),attackBonus(Copy.attackBonus),defenceBonus(Copy.defenceBonus),minimumHonnor(Copy.minimumHonnor),cardText(Copy.cardText),effectCost(Copy.effectCost)	{}
+Green::~Green(){}
 int Green::getEffectCost(){
 	return effectCost;
 }

@@ -11,5 +11,6 @@ class Black:public Card{
 		~Black();
 		bool getIsRevealed();
 		virtual void print();
+		virtual int getType()=0;
 };
 #endif		//BLACK

@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=22
+UnitCount=21
 
 [VersionInfo]
 Major=1
@@ -241,16 +241,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit20]
-FileName=Untitled1
+FileName=TypeConverter.hpp
 Folder=
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
 [Unit21]
-FileName=TypeConverter.hpp
+FileName=TypeConverter.cpp
 CompileCpp=1
 Folder=
 Compile=1
