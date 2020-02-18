@@ -25,25 +25,31 @@ class Personality:public Black{
 		void giveItem(Item& toGive);
 		void giveFollower(Follower& toGive);
 		int getType();
+		void print();
 };
 class Attacker:public Personality{
 	public:
 		Attacker(string GivenName);
+		void print();
 };
 class Defender:public Personality{
 	public:
 		Defender(string GivenName);
+		void print();
 };
 class Champion:public Personality{
 	public:
 		Champion(string GivenName);
+		void print();
 };
 class Chancellor:public Personality{
 	public:
 		Chancellor(string GivenName);
+		void print();
 };
 class Shogun:public Personality{
 	public:
 		Shogun(string GivenName);
+		void print();
 };
 #endif		//PERSONALITYG

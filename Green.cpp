@@ -18,4 +18,7 @@ int Green::getEffectCost(){
 void Green::giveBonus(){
 	//What do we do?
 }
+void Green::print(){
+	cout<<"Attack Bonus: "<<attackBonus<<" Defence Bonus: "<<defenceBonus<<" Minimum Honour: "<<minimumHonnor<<" Text:"<<cardText<<" Effect Cost: "<<effectCost<<" Effect Bonus"<<effectBonus<<endl;
+}
 

@@ -10,5 +10,6 @@ class Black:public Card{
 		Black(const Black& Copy);
 		~Black();
 		bool getIsRevealed();
+		void print();
 };
 #endif		//BLACK

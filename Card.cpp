@@ -14,3 +14,14 @@ Card::~Card(){
 int Card::getCost(){
 	return Cost;
 }
+string Card::getName(){
+	return Name;
+}
+void Card::print(){
+	cout<<"Name: "<<Name<<" Cost: "<<Cost<<" Tapped: ";
+	if(isTapped){
+		cout<<"Yes ";
+	}else{
+		cout<<"No ";
+	}
+}

@@ -10,25 +10,31 @@ class Item:public Green{
 		Item(const Item& Copy);
 		virtual	~Item();
 		int getType();
+		void print();
 };
 class Katana:public Item{
 	public:
 		Katana(string givenName);
+		void print();
 };
 class Spear:public Item{
 	public:
 		Spear(string givenName);
+		void print();
 };
 class Bow:public Item{
 	public:
 		Bow(string givenName);
+		void print();
 };
 class Ninjato:public Item{
 	public:
 		Ninjato(string givenName);
+		void print();
 };
 class Wakizashi:public Item{
 	public:
 		Wakizashi(string givenName);
+		void print();
 };
 #endif //ITEMG

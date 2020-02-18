@@ -9,3 +9,10 @@ Stronghold::~Stronghold(){
 int Stronghold::getDefence(){
 	return initDefence;
 }
+void Stronghold::print(){
+	cout<<"Type: Stronghold";
+	Card::print();
+	Black::print();
+	Holding::print();
+	cout<<endl;
+}

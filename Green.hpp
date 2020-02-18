@@ -16,5 +16,6 @@ class Green: public Card{
 	~Green();
 	int getEffectCost();
 	void giveBonus();
+	void print();
 };
 #endif //GREEN

@@ -9,3 +9,11 @@ Black::~Black(){
 bool Black::getIsRevealed(){
 	return isRevealed;
 }
+void Black::print(){
+	cout<<"Recealed: ";
+	if(isRevealed){
+		cout<<"Yes ";
+	}else{
+		cout<<"No ";
+	}
+}

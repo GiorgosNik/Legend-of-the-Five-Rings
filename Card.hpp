@@ -13,5 +13,7 @@ class Card{
 		Card(const Card& Copy);
 		virtual	~Card();	//To be used for debuging messages ONLY!!!
 		int getCost();
+		string getName();
+		virtual void print();
 };
 #endif //CARD
