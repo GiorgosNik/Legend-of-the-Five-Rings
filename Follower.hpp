@@ -1,13 +1,13 @@
 #ifndef FOLLOWERG
 #define FOLLOWERG
-#include "Green.hpp"
-class Follower:public Green{
+#include "GreenCard.hpp"
+class Follower:public GreenCard{
 	public:
 	Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost);
 	Follower(const Follower& Copy);
 	virtual	~Follower();
 	int getType();
-	virtual	void print()=0;
+	virtual	void print();
 };
 class Footsoldier:public Follower{
 	public:

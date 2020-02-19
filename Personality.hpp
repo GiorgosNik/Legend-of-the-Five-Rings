@@ -2,11 +2,11 @@
 #define PERSONALITYG
 #include <iostream>
 #include <vector>
-#include "Black.hpp"
+#include "BlackCard.hpp"
 #include "Follower.hpp"
 #include "Item.hpp"
 using namespace std;
-class Personality:public Black{
+class Personality:public BlackCard{
 	int attack;
 	int defence;
 	int honour;

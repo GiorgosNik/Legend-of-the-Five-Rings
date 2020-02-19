@@ -10,12 +10,12 @@ class TypeConverter
 {
 public:
 	TypeConverter();
-	void getCorrectType(Black *card, Personality **person, Holding **hold);
-	void getCorrectType(Green *card, Follower **follow, Item **item);
-	Personality *getPersonality(Black *d);
-	Holding *getHolding(Black *d);
-	Follower *getFollower(Green *d);
-	Item *getItem(Green *d);
+	void getCorrectType(BlackCard *card, Personality **person, Holding **hold);
+	void getCorrectType(GreenCard *card, Follower **follow, Item **item);
+	Personality *getPersonality(BlackCard *d);
+	Holding *getHolding(BlackCard *d);
+	Follower *getFollower(GreenCard *d);
+	Item *getItem(GreenCard *d);
 };
 
 #endif

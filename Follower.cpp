@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Follower.hpp"
 using namespace std;
-Follower::Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost):Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenText,givenEffectBonus,givenEffectCost){}
-Follower::Follower(const Follower& Copy):Green(Copy){}
+Follower::Follower(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost):GreenCard(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenText,givenEffectBonus,givenEffectCost){}
+Follower::Follower(const Follower& Copy):GreenCard(Copy){}
 Follower::~Follower(){}
 int Follower::getType(){
 	return FOLLOWER;
@@ -16,37 +16,37 @@ Bushido::Bushido(string GivenName):Follower(GivenName,8,8,8,6,"SAMPLETEXT",3,8){
 void Footsoldier::print(){
 	cout<<"Type: Footsoldier";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 void Archer::print(){
 	cout<<"Type: Archer";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 void Sieger::print(){
 	cout<<"Type: Sieger";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 void Cavalry::print(){
 	cout<<"Type: Cavalry";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 void Atakebune::print(){
 	cout<<"Type: Atakebune";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 void Bushido::print(){
 	cout<<"Type: Bushido";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	cout<<endl;
 }
 

@@ -3,12 +3,12 @@
 #include <iostream>
 #include "Card.hpp"
 using namespace std;
-class Black:public Card{
+class BlackCard:public Card{
 	bool isRevealed;
 	public:
-		Black(int givenCost,string givenName);
-		Black(const Black& Copy);
-		~Black();
+		BlackCard(int givenCost,string givenName);
+		BlackCard(const BlackCard& Copy);
+		~BlackCard();
 		bool getIsRevealed();
 		virtual void print();
 		virtual int getType()=0;

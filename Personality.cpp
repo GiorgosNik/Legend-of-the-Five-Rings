@@ -3,8 +3,8 @@
 #include "Follower.hpp"
 #include "Item.hpp"
 using namespace std;
-Personality::Personality(int GivenCost,string GivenName,int givenAttack,int givenDefence,int givenHonour):Black(GivenCost,GivenName),attack(givenAttack),defence(givenDefence),honour(givenHonour),isAlive(true){}
-Personality::Personality(const Personality& Copy):Black(Copy),attack(Copy.attack),defence(Copy.defence),honour(Copy.honour),Retinue(Copy.Retinue),Arsenal(Copy.Arsenal){}
+Personality::Personality(int GivenCost,string GivenName,int givenAttack,int givenDefence,int givenHonour):BlackCard(GivenCost,GivenName),attack(givenAttack),defence(givenDefence),honour(givenHonour),isAlive(true){}
+Personality::Personality(const Personality& Copy):BlackCard(Copy),attack(Copy.attack),defence(Copy.defence),honour(Copy.honour),Retinue(Copy.Retinue),Arsenal(Copy.Arsenal){}
 Personality::~Personality(){}
 void Personality::print(){
 	cout<<"Attack: "<<attack<<" Defence: "<<defence<<" Honour: "<<honour;
@@ -66,35 +66,35 @@ Champion::Champion(string GivenName):Personality(30,GivenName,20,20,12){}
 void Attacker::print(){
 	cout<<"Type: Attacker ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Personality::print();
 	cout<<endl;
 }
 void Defender::print(){
 	cout<<"Type: Defender ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Personality::print();
 	cout<<endl;
 }
 void Shogun::print(){
 	cout<<"Type: Shogun ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Personality::print();
 	cout<<endl;
 }
 void Chancellor::print(){
 	cout<<"Type: Chancellor ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Personality::print();
 	cout<<endl;
 }
 void Champion::print(){
 	cout<<"Type: Champion ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Personality::print();
 	cout<<endl;
 }

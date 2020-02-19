@@ -4,15 +4,15 @@ using namespace std;
 
 DeckBuilder::DeckBuilder()	//DeckBuilder Constructor
 {
-	black = new list<Black *>();
-	green = new list<Green *>();
+	black = new list<BlackCard *>();
+	green = new list<GreenCard *>();
 	srand(unsigned(time(NULL)));
 }
 
 DeckBuilder::~DeckBuilder()	//DeckBuilder Destructor
 {
-	list<Black *>::iterator it;
-	list<Green *>::iterator it2;
+	list<BlackCard *>::iterator it;
+	list<GreenCard *>::iterator it2;
 	for (it = black->begin(); it != black->end(); it++)
 	{
 		black->remove((*it));
@@ -29,7 +29,7 @@ DeckBuilder::~DeckBuilder()	//DeckBuilder Destructor
 	delete green;
 }
 
-list<Green *> *DeckBuilder::createFateDeck()	//These Populate the Decks using the custom class Constructors with string arg
+list<GreenCard *> *DeckBuilder::createFateDeck()	//These Populate the Decks using the custom class Constructors with string arg
 {
 	int i;
 	for (i = 0; i < NO_FOOTSOLDIER; i++)
@@ -59,7 +59,7 @@ list<Green *> *DeckBuilder::createFateDeck()	//These Populate the Decks using th
 	return green;
 }
 
-list<Black *> *DeckBuilder::createDynastyDeck()
+list<BlackCard *> *DeckBuilder::createDynastyDeck()
 {
 	int i;
 	//Create Personalities
@@ -94,10 +94,10 @@ list<Black *> *DeckBuilder::createDynastyDeck()
 	return black;
 }
 
-void DeckBuilder::deckShuffler(list<Black *> *black)
+void DeckBuilder::deckShuffler(list<BlackCard *> *black)
 {
-	vector<Black *> vect;
-	list<Black *>::iterator it;
+	vector<BlackCard *> vect;
+	list<BlackCard *>::iterator it;
 	for (it = black->begin(); it != black->end(); it++)
 		vect.push_back((*it));
 
@@ -105,15 +105,15 @@ void DeckBuilder::deckShuffler(list<Black *> *black)
 
 	black->clear();
 
-	vector<Black *>::iterator it2;
+	vector<BlackCard *>::iterator it2;
 	for (it2 = vect.begin(); it2 != vect.end(); it2++)
 		black->push_back((*it2));
 }
 
-void DeckBuilder::deckShuffler(list<Green *> *green)
+void DeckBuilder::deckShuffler(list<GreenCard *> *green)
 {
-	vector<Green *> vect;
-	list<Green *>::iterator it;
+	vector<GreenCard *> vect;
+	list<GreenCard *>::iterator it;
 	for (it = green->begin(); it != green->end(); it++)
 		vect.push_back((*it));
 
@@ -121,7 +121,7 @@ void DeckBuilder::deckShuffler(list<Green *> *green)
 
 	green->clear();
 
-	vector<Green *>::iterator it2;
+	vector<GreenCard *>::iterator it2;
 	for (it2 = vect.begin(); it2 != vect.end(); it2++)
 		green->push_back((*it2));
 }

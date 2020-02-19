@@ -11,7 +11,7 @@ int Stronghold::getDefence(){
 void Stronghold::print(){
 	cout<<"Type: Stronghold";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }

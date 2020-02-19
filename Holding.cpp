@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Holding.hpp"
 using namespace std;
-Holding::Holding(int givenCost,string GivenName,int Harvest):Black(givenCost,GivenName),harvestValue(Harvest),upperHolding(NULL),lowerHolding(NULL){}
-Holding::Holding(const Holding& Copy):Black(Copy),harvestValue(Copy.harvestValue){}
+Holding::Holding(int givenCost,string GivenName,int Harvest):BlackCard(givenCost,GivenName),harvestValue(Harvest),upperHolding(NULL),lowerHolding(NULL){}
+Holding::Holding(const Holding& Copy):BlackCard(Copy),harvestValue(Copy.harvestValue){}
 Holding::~Holding(){
 	if(upperHolding!=NULL){
 		delete upperHolding;		//POSIBLE DELETE PROBLEM
@@ -47,42 +47,42 @@ CrystalMine::CrystalMine(string GivenName):Holding(12,GivenName,6){}
 void GiftsandFavour::print(){
 	cout<<"Type: Gifts and Favours ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }
 void Plain::print(){
 	cout<<"Type: Plain ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }
 void Farmland::print(){
 	cout<<"Type: Farmland ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }
 void Mine::print(){
 	cout<<"Type: Mine ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }
 void GoldMine::print(){
 	cout<<"Type: Gold Mine ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }
 void CrystalMine::print(){
 	cout<<"Type: Crysta lMine ";
 	Card::print();
-	Black::print();
+	BlackCard::print();
 	Holding::print();
 	cout<<endl;
 }

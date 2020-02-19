@@ -1,26 +1,26 @@
-#include "Green.hpp"
+#include "GreenCard.hpp"
 using namespace std;
-Green::Green(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost)
+GreenCard::GreenCard(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenText,int givenEffectBonus,int givenEffectCost)
 :Card(givenCost,givenName),attackBonus(givenAttBonus),defenceBonus(givenDefBonus),minimumHonnor(givenMinHonnor),cardText(givenText),effectBonus(givenEffectBonus),effectCost(givenEffectCost){}
-Green::Green(const Green& Copy)
+GreenCard::GreenCard(const GreenCard& Copy)
 :Card(Copy),attackBonus(Copy.attackBonus),defenceBonus(Copy.defenceBonus),minimumHonnor(Copy.minimumHonnor),cardText(Copy.cardText),effectCost(Copy.effectCost)	{}
-Green::~Green(){}
-int Green::getEffectCost(){
+GreenCard::~GreenCard(){}
+int GreenCard::getEffectCost(){
 	return effectCost;
 }
-void Green::giveBonus(){
+void GreenCard::giveBonus(){
 	attackBonus=attackBonus+effectBonus;
 	defenceBonus=defenceBonus+effectBonus;
 	effectBonus=0;
 	effectCost=0;
 }
-int Green::getAttackBonus(){
+int GreenCard::getAttackBonus(){
 	return attackBonus;
 }
-int Green::getDefenceBonus(){
+int GreenCard::getDefenceBonus(){
 	return defenceBonus;
 }
-void Green::print(){
+void GreenCard::print(){
 	cout<<"Attack Bonus: "<<attackBonus<<" Defence Bonus: "<<defenceBonus<<" Minimum Honour: "<<minimumHonnor<<" Text:"<<cardText<<" Effect Cost: "<<effectCost<<" Effect Bonus"<<effectBonus<<endl;
 }
 

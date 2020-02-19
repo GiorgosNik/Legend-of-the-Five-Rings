@@ -1,9 +1,9 @@
 #include "Item.hpp"
 using namespace std;
 Item::Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectBonus,int givenEffectCost,int givenDurability)
-:Green(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenTextm,givenEffectBonus,givenEffectCost),durability(givenDurability){}
+:GreenCard(givenName,givenCost,givenAttBonus,givenDefBonus,givenMinHonnor,givenTextm,givenEffectBonus,givenEffectCost),durability(givenDurability){}
 Item::Item(const Item& Copy)
-:Green(Copy),durability(Copy.durability){}
+:GreenCard(Copy),durability(Copy.durability){}
 Item::~Item(){}
 int Item::getType(){
 	return ITEM;
@@ -20,35 +20,35 @@ Wakizashi::Wakizashi(string GivenName):Item(GivenName,8,5,5,3,"SAMPLETEXT",3,3,8
 void Katana::print(){
 	cout<<"Type: Katana ";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	Item::print();
 	cout<<endl;
 }
 void Spear::print(){
 	cout<<"Type: Spear ";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	Item::print();
 	cout<<endl;
 }
 void Bow::print(){
 	cout<<"Type: Bow ";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	Item::print();
 	cout<<endl;
 }
 void Ninjato::print(){
 	cout<<"Type: Ninjato ";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	Item::print();
 	cout<<endl;
 }
 void Wakizashi::print(){
 	cout<<"Type: Wakizashi ";
 	Card::print();
-	Green::print();
+	GreenCard::print();
 	Item::print();
 	cout<<endl;
 }

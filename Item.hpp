@@ -1,8 +1,8 @@
 #ifndef ITEMG
 #define ITEMG
-#include "Green.hpp"
+#include "GreenCard.hpp"
 using namespace std;
-class Item:public Green{
+class Item:public GreenCard{
 	private:
 		int durability;
 	public:

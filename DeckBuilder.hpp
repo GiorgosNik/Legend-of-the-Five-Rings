@@ -9,8 +9,8 @@
 #include <ctime>
 #include <cstdlib>
 
-#include "Green.hpp"
-#include "Black.hpp"
+#include "GreenCard.hpp"
+#include "BlackCard.hpp"
 #include "Card.hpp"
 #include "Personality.hpp"
 #include "Holding.hpp"
@@ -53,16 +53,16 @@
 class DeckBuilder
 {
 	private:
-		list<Green*>* green;
-		list<Black*>* black;
+		list<GreenCard*>* green;
+		list<BlackCard*>* black;
 	public:
 		DeckBuilder();
 		~DeckBuilder();
-		list<Green *>* createFateDeck();
-	 	list<Black *>* createDynastyDeck();
+		list<GreenCard *>* createFateDeck();
+	 	list<BlackCard *>* createDynastyDeck();
 
-	 	void deckShuffler(list<Black*> *black);
-		void deckShuffler(list<Green*> *green);
+	 	void deckShuffler(list<BlackCard*> *black);
+		void deckShuffler(list<GreenCard*> *green);
 };
 
 #endif

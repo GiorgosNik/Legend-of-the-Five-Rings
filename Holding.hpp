@@ -1,9 +1,9 @@
 #ifndef HOLDINGG
 #define HOLDINGG
 #include <iostream>
-#include "Black.hpp"
+#include "BlackCard.hpp"
 using namespace std;
-class Holding:public Black{
+class Holding:public BlackCard{
 		int harvestValue;
 		Holding* upperHolding;
 		Holding* lowerHolding;
