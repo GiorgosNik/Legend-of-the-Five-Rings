@@ -14,6 +14,7 @@ class Card{
 		virtual	~Card();	//To be used for debuging messages ONLY!!!
 		int getCost();
 		string getName();
+		void untap();
 		virtual void print();
 };
 #endif //CARD

@@ -25,3 +25,6 @@ void Card::print(){
 		cout<<"No ";
 	}
 }
+void Card::untap(){
+	isTapped=false;
+}

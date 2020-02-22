@@ -15,3 +15,6 @@ void BlackCard::print(){
 		cout<<"No ";
 	}
 }
+void BlackCard::reveal(){
+	isRevealed=true;
+}
