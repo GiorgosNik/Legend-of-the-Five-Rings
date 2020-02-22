@@ -8,23 +8,40 @@ namespace phases{
 		Given.revealProvinces();
 		Given.printHand();
 		Given.printProvinces();
+		Given.resetCashPool();		//here
 	};
 	void equipPhase(Player& Given){
-		//Only if army is not empty
 		int handNum,armyNum;
-		string upgrade;
+		string input;
 		if(Given.isArmyEmpy()==false){
-			Given.prinHandNumbered();
-			cout<<"Select a card: "<<endl;
+			do{
+			Given.prinHandNumbered();	//here
+			cout<<"Select a Fate Card: "<<endl;
 			cin>>handNum;
-			cout<<"Do you want to upgrade? Y/N"<<endl;
-			cin>>upgrade;
-			while(upgrade!="Y"&&upgrade!="N"){
-				cout<<"Wrong input, please use Y/N"<<endl;
-				cin>>upgrade;
+			while(handNum<1||handNum>Given.getHandSize()){	//Here
+				cout<<"Bad input, please try again"<<endl;
+				cin>>handNum;
 			}
-			//remove it from the vector
-			
+			cout<<"Do you want to upgrade? Y/N"<<endl;
+			cin>>input;
+			while(input!="Y"&&input!="N"){
+				cout<<"Wrong input, please use Y/N"<<endl;
+				cin>>input;
+			}
+			if(input=="Y"){
+				Given.upgradeHand(handNum);		//here
+			}
+			cout<<"Assign to whom?"<<endl;
+			Given.printArmyNumbered();		//Here
+			cin>>armyNum;
+			while(armyNum<1||handNum>Given.getArmySize()){	//Here
+				cout<<"Bad input, please try again"<<endl;
+				cin>>armyNum;
+			}
+			Given.assignToArmy(handNum,armyNum);		//Here
+			cout<<"Want to get anything else? Y/N"<<endl;
+			cin>>input;
+			}while(input!=N)
 		}
 	};
 	void battlePhase(Player& Given){
