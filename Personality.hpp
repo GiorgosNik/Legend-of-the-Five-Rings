@@ -5,6 +5,8 @@
 #include "BlackCard.hpp"
 #include "Follower.hpp"
 #include "Item.hpp"
+#DEFINE MAXFOLLOWERS 5
+#DEFINE MAXITEMS 5
 using namespace std;
 class Personality:public BlackCard{
 	int attack;
@@ -25,6 +27,8 @@ class Personality:public BlackCard{
 		void giveItem(Item& toGive);
 		void giveFollower(Follower& toGive);
 		int getType();
+		bool getItemNumber();
+		bool getFollowerNumber();
 		virtual void print();
 };
 class Attacker:public Personality{

@@ -18,6 +18,7 @@ class GreenCard: public Card{
 	void giveBonus();
 	int getDefenceBonus();
 	int getAttackBonus();
+	int getminHonour();
 	virtual void print();
 	virtual int getType()=0;
 };

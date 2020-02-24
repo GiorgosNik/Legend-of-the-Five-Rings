@@ -58,6 +58,12 @@ void Personality::giveFollower(Follower& toGive){
 int Personality::getType(){
 	return PERSONALITY;
 }
+bool Personality::getFollowerNumber(){
+	return Retinue.size()<MAXFOLLOWERS;
+}
+bool Personality::getItemNumber(){
+	return Arsenal.size()<MAXITEMS;
+}
 Attacker::Attacker(string GivenName):Personality(5,GivenName,3,2,2){}
 Defender::Defender(string GivenName):Personality(5,GivenName,2,3,2){}
 Shogun::Shogun(string GivenName):Personality(15,GivenName,10,5,8){}
