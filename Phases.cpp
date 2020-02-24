@@ -1,14 +1,16 @@
 #include <iostream>
 #include <vector>
+#include "Personality.hpp"
+class Player;	//TEMP
 using namespace std;
 namespace phases{
 	void startingPhase(Player& Given){
-		Given.untapEverything();	//here
-		Given.drawFateCard();
-		Given.revealProvinces();		//here
-		Given.printHand();
-		Given.printProvinces();
-		Given.resetCashPool();
+	//	Given.untapEverything();		//here
+	//	Given.drawFateCard();
+	//	Given.revealProvinces();		//here
+	//	Given.printHand();
+	//	Given.printProvinces();
+	//	Given.resetCashPool();
 	};
 	void equipPhase(Player& Given){
 		int handNum,armyNum,rez;
@@ -50,7 +52,7 @@ namespace phases{
 			}
 			cout<<"Want to get anything else? Y/N"<<endl;
 			cin>>input;
-			}while(input!=N)
+			}while(input!="N");
 		}else{
 			cout<<"No army to equip with Items and Followers."<<endl;
 		}
@@ -58,6 +60,7 @@ namespace phases{
 	void battlePhase(Player& Given,vector<Player*> Players){
 		int selection;
 		string input;
+		Player* target;
 		vector<Personality*> toAttack;
 		Given.printArmyNumberedUntapped();
 		cout<<"Select Personalities to tapp, select 0 to finish selection."<<endl;
@@ -71,14 +74,21 @@ namespace phases{
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
 		if(input=="Y"){
-		//Print the players numbered
+		for(int h=0;h<Players.size();h++){		////Loop to Print Players Numbered
+			cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
+		}
 		cout<<"Who do you want to target?"<<endl;
 		cint>>selection;
-		while(*(Players.at(selection-1))=Given){
+		while(*(Players.at(selection-1))=Given){	//Input Guard for selection
 			cout<<"You cannot attack yourself, please select someone else:"<<endl;
-			//Print the players numbered
+			for(int h=0;h<Players.size();h++){  //Loop to Print Players Numbered
+				cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
+			}
 			cin>>selection;
 		}
+		target=Players.at(selection-1);
+		target->printProvincesNumbered();
+		cout<<"Select a province to Attack: "<<endl;
 		}
 		
 	};

@@ -31,6 +31,9 @@ void Card::untap(){
 bool Card::getIsTapped(){
 	return isTapped;
 }
-bool Card::tapp(){
+void Card::tapp(){
 	isTapped=true;
+}
+void Card::printName(){
+	cout<<Name;
 }

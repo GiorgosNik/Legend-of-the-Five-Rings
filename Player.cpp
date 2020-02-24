@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <GreenCard>		
-#include <BlackCard>		
+#include "GreenCard.hpp"
+#include "BlackCard.hpp"
+#include "Holding.hpp"
+#include "Stronghold.hpp"
 using namespace std;
 
 class Player 
@@ -16,6 +18,7 @@ private:
     vector<Card*> handCards;
     vector<BlackCard*> provinces;
     vector<BlackCard*> Army;
+    Stronghold* Keep;
 public:
     Player(int handCards)
 	{
@@ -127,6 +130,16 @@ public:
 	}
 	void tapArmy(int toTap){
 		Army.at(toTap)->tapp();
+	}
+	void printName(){
+		cout<<name;
+	}
+	void printProvincesNumbered(){
+		for(int i=0;i<provinces.size();i++){
+			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;
+		}
+	}
+	bool payment(int cost){
 	}
 };
 

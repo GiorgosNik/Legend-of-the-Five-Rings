@@ -17,6 +17,7 @@ class Card{
 		bool getIsTapped();
 		void untap();
 		void tapp();
+		void printName();
 		virtual void print();
 };
 #endif //CARD
