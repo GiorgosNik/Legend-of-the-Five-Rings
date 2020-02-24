@@ -28,3 +28,9 @@ void Card::print(){
 void Card::untap(){
 	isTapped=false;
 }
+bool Card::getIsTapped(){
+	return isTapped;
+}
+bool Card::tapp(){
+	isTapped=true;
+}

@@ -18,13 +18,13 @@ namespace phases{
 			Given.prinHandNumbered();
 			cout<<"Select a Fate Card: "<<endl;
 			cin>>handNum;
-			while(handNum<1||handNum>Given.getHandSize()){
+			while(handNum<1||handNum>Given.getHandSize()){	//Input Guard for handNum
 				cout<<"Bad input, please try again"<<endl;
 				cin>>handNum;
 			}//USE THE MONEY
 			cout<<"Do you want to upgrade? Y/N"<<endl;
 			cin>>input;
-			while(input!="Y"&&input!="N"){
+			while(input!="Y"&&input!="N"){					//Input Guard for input
 				cout<<"Wrong input, please use Y/N"<<endl;
 				cin>>input;
 			}
@@ -34,7 +34,7 @@ namespace phases{
 			cout<<"Assign to whom?"<<endl;
 			Given.printArmyNumbered();
 			cin>>armyNum;
-			while(armyNum<1||handNum>Given.getArmySize()){
+			while(armyNum<1||handNum>Given.getArmySize()){	//Input Guard for armyNum
 				cout<<"Bad input, please try again"<<endl;
 				cin>>armyNum;
 			}
@@ -51,9 +51,35 @@ namespace phases{
 			cout<<"Want to get anything else? Y/N"<<endl;
 			cin>>input;
 			}while(input!=N)
+		}else{
+			cout<<"No army to equip with Items and Followers."<<endl;
 		}
 	};
-	void battlePhase(Player& Given){
+	void battlePhase(Player& Given,vector<Player*> Players){
+		int selection;
+		string input;
+		vector<Personality*> toAttack;
+		Given.printArmyNumberedUntapped();
+		cout<<"Select Personalities to tapp, select 0 to finish selection."<<endl;
+		cin>>selection;
+		while(selection!=0){
+			Given.tapArmy(selection-1);
+			cout<<endl<<endl<<endl<<endl<<endl;
+			Given.printArmyNumberedUntapped();
+		}
+		cout<<"Army Sellection Complete"<<endl;
+		cout<<"Do you want to attack? Y/N"<<endl;
+		cin>>input;
+		if(input=="Y"){
+		//Print the players numbered
+		cout<<"Who do you want to target?"<<endl;
+		cint>>selection;
+		while(*(Players.at(selection-1))=Given){
+			cout<<"You cannot attack yourself, please select someone else:"<<endl;
+			//Print the players numbered
+			cin>>selection;
+		}
+		}
 		
 	};
 	void economyPhase(Player& Given){

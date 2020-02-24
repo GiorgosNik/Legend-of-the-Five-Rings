@@ -7,6 +7,7 @@ using namespace std;
 class Player 
 {
 private:
+	string Name; //my adition
 	int honour;
     int numOfProvinces = 4;
     int balance = 0;
@@ -86,7 +87,7 @@ public:
 	int getArmySize(){
 		return handCards.size();
 	}
-	int assignToArmy(int handNum,int armyNum){	//return error in int
+	int assignToArmy(int handNum,int armyNum){
 		if(handCard.at(handNum-1)->getminHonour>Army.at(armyNum-1)->getHonour){
 			return 0;
 		}
@@ -103,6 +104,29 @@ public:
 			return 3;
 		}
 		
+	}
+	void printTappedArmyNumbered(){
+		j=1;
+		for(i=0;i<Army.size();i++){
+			if(Army.at(i)->getIsTapped()){
+				cout<<j<<": ";
+				j++;
+				Army.at(i)->print();
+			}
+		}
+	}
+	void printUntappedArmyNumbered(){
+		j=1;
+		for(i=0;i<Army.size();i++){
+			if(Army.at(i)->getIsTapped()!=true){
+				cout<<j<<": ";
+				j++;
+				Army.at(i)->print();
+			}
+		}
+	}
+	void tapArmy(int toTap){
+		Army.at(toTap)->tapp();
 	}
 };
 

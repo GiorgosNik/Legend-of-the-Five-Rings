@@ -18,14 +18,14 @@ void Personality::print(){
 	}else{
 		cout<<"Has Followers: ";
 		for(int i=0;i<Retinue.size();i++){
-			Retinue.at(i).print();
+			Retinue.at(i)->print();
 		}
 	}
 	if(Arsenal.empty()){
 		cout<<"No items"<<endl;
 	}else{
 		for(int i=0;i<Arsenal.size();i++){
-			Arsenal.at(i).print();
+			Arsenal.at(i)->print();
 		}
 	}
 	
@@ -48,12 +48,12 @@ void Personality::setDeath(){
 void Personality::giveItem(Item& toGive){
 	attack+=toGive.getAttackBonus();
 	defence+=toGive.getDefenceBonus();
-	Arsenal.push_back(toGive);
+	Arsenal.push_back(&toGive);
 }
 void Personality::giveFollower(Follower& toGive){
 	attack+=toGive.getAttackBonus();
 	defence+=toGive.getDefenceBonus();
-	Retinue.push_back(toGive);
+	Retinue.push_back(&toGive);
 }
 int Personality::getType(){
 	return PERSONALITY;

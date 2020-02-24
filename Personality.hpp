@@ -5,16 +5,16 @@
 #include "BlackCard.hpp"
 #include "Follower.hpp"
 #include "Item.hpp"
-#DEFINE MAXFOLLOWERS 5
-#DEFINE MAXITEMS 5
+#define MAXFOLLOWERS 5
+#define MAXITEMS 5
 using namespace std;
 class Personality:public BlackCard{
 	int attack;
 	int defence;
 	int honour;
 	bool isAlive;
-	vector <Follower> Retinue;
-	vector <Item> Arsenal;	
+	vector <Follower*> Retinue;
+	vector <Item*> Arsenal;	
 	public:
 		Personality(int GivenCost,string GivenName,int givenAttack,int givenDefence,int givenHonour);
 		Personality(const Personality& Copy);

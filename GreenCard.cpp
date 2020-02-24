@@ -24,6 +24,6 @@ void GreenCard::print(){
 	cout<<"Attack Bonus: "<<attackBonus<<" Defence Bonus: "<<defenceBonus<<" Minimum Honour: "<<minimumHonnor<<" Text:"<<cardText<<" Effect Cost: "<<effectCost<<" Effect Bonus"<<effectBonus<<endl;
 }
 int GreenCard::getminHonour(){
-	retunr minimumHonour();
+	return minimumHonnor;
 }
 
