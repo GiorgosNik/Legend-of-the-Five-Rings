@@ -15,10 +15,10 @@ private:
     int balance = 0;
     list<GreenCard*> Fate;		
     list<BlackCard*> Dynasty;
-    vector<Card*> handCards;
+    vector<GreenCard*> handCards;	//my change
     vector<BlackCard*> provinces;
     vector<BlackCard*> Army;
-    Stronghold* Keep;
+    Stronghold* Keep;		//my aadition
 public:
     Player(int handCards)
 	{
@@ -140,6 +140,35 @@ public:
 		}
 	}
 	bool payment(int cost){
+		int cumulative;
+		cumulative=balance;
+		if(Keep->getIsTapped()==false){
+			cumulative+=Keep->getHarvestValue();
+		}
+		if(cumulative>=cost){	//Cost covered by balance or Keep Harvest
+			balance=cumulative-cost;
+			Keep->tapp();
+			return true;
+		}
+		for(int i=0;i<provinces.size();i++){
+			if(provinces.at(i)->getIsTapped()==false){ //Adding Harvest of untapped provinces to cumulative
+				cumulative+=provinces.at(i)->getHarvestValue();
+				if(cumulative>=cost){	//If it becomes enough
+					balance=cumulative-cost;
+					Keep->tapp();
+					for(j=0;j<=i;j++){
+						provinces.at(j)->tapp();
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	bool upgradeHand(int handNum){
+		if(payment(handCards.at(handNum-1)->getCost())){
+			handCards.at(handNum-1)->
+		}
 	}
 };
 

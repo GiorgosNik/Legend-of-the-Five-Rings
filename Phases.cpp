@@ -16,43 +16,47 @@ namespace phases{
 		int handNum,armyNum,rez;
 		string input;
 		if(Given.isArmyEmpy()==false){
-			do{
 			Given.prinHandNumbered();
-			cout<<"Select a Fate Card: "<<endl;
-			cin>>handNum;
-			while(handNum<1||handNum>Given.getHandSize()){	//Input Guard for handNum
+			cout<<"Select a Fate Card with the displayed number, select 0 to exit"<<endl;
+			cin>>handNum;									//Select Green Card
+			while(handNum<0||handNum>Given.getHandSize()){	//Input Guard for handNum
 				cout<<"Bad input, please try again"<<endl;
 				cin>>handNum;
-			}//USE THE MONEY
-			cout<<"Do you want to upgrade? Y/N"<<endl;
-			cin>>input;
-			while(input!="Y"&&input!="N"){					//Input Guard for input
-				cout<<"Wrong input, please use Y/N"<<endl;
-				cin>>input;
 			}
-			if(input=="Y"){
-				Given.upgradeHand(handNum);		//here
-			}
-			cout<<"Assign to whom?"<<endl;
-			Given.printArmyNumbered();
-			cin>>armyNum;
-			while(armyNum<1||handNum>Given.getArmySize()){	//Input Guard for armyNum
-				cout<<"Bad input, please try again"<<endl;
+			if(handNum!=0){
+			if(Given.payment(handCards.at(handNum)->getCost)){
+				cout<<"Do you want to upgrade? Y/N"<<endl;
+				cin>>input;										//Upgrade Green Card? 
+				while(input!="Y"&&input!="N"){					//Input Guard for input
+					cout<<"Wrong input, please use Y/N"<<endl;
+					cin>>input;
+				}
+				if(input=="Y"){
+					Given.upgradeHand(handNum);		//here
+				}
+				cout<<"Assign to whom?"<<endl;
+				Given.printArmyNumbered();
 				cin>>armyNum;
-			}
-			rez=Given.assignToArmy(handNum,armyNum);
-			if(rez==0){
-				cout<<"This personality does not have enough honour."<<endl;
-			}else if(rez==1){
-				cout<<"This personality has too many Items"<<endl;
-			}else if(rez==2){
-				cout<<"This personality has too many Followers"<<endl;
+				while(armyNum<1||handNum>Given.getArmySize()){	//Input Guard for armyNum
+					cout<<"Bad input, please try again"<<endl;
+					cin>>armyNum;
+				}
+				rez=Given.assignToArmy(handNum,armyNum);
+				if(rez==0){										//Posible Results
+					cout<<"This personality does not have enough honour."<<endl;
+				}else if(rez==1){
+					cout<<"This personality has too many Items"<<endl;
+				}else if(rez==2){
+					cout<<"This personality has too many Followers"<<endl;
+				}else{
+					cout<<"Assigned succesfully"<<endl;
+				}
 			}else{
-				cout<<"Assigned succesfully"<<endl;
-			}
-			cout<<"Want to get anything else? Y/N"<<endl;
-			cin>>input;
-			}while(input!="N");
+				cout<<"Not enought funds"<<endl;
+			}	
+		}else{
+			cout<<"Exiting"<<endl;
+		}
 		}else{
 			cout<<"No army to equip with Items and Followers."<<endl;
 		}
