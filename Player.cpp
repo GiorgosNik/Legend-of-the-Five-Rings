@@ -17,7 +17,8 @@ private:
     list<BlackCard*> Dynasty;
     vector<GreenCard*> handCards;	//my change
     vector<BlackCard*> provinces;
-    vector<BlackCard*> Army;
+    vector<Personality*> Army;
+    vector<Personality*> Deployed;		//Mine 
     Stronghold* Keep;		//my aadition
 public:
     Player(int handCards)
@@ -169,6 +170,56 @@ public:
 		if(payment(handCards.at(handNum-1)->getCost())){
 			handCards.at(handNum-1)->
 		}
+	}
+	void printProvincesNumbered(){
+		for(int i=0;i<provinces.size();i++){
+			cout<<i+1<<": ";
+			provinces.at(i)->print();
+		}
+	}
+	int getProvinceNumber{
+		return numOfProvinces;
+	}
+	void deploy(int sellection){
+		int i=0;
+		int j=0;
+		while(j<selection){
+			if(Army.at(i)->getIsTapped()){
+				j++;
+			}
+		}
+		Deployed.push_back(Army.at(i));
+	}
+	void undeploy(){
+		Deployed.clear();
+	}
+	int getTappedNumber(){
+		int	num;
+		for(int i=0;i<Army.size();i++){
+			if(Army.at(i)->getIsTapped()){
+				num++;
+			}
+		}
+		return num;
+	}
+	int getDeployedAttack(){
+		int sum=0;
+		for(int i=0;i<Deployed.size();i++){
+			sum+=Deployed.at(i)->getAttack();
+		}
+		return sum;
+	}
+	int getTappedDefence(){
+		int sum=0;
+		for(int i=0;i<Army.size();i++){
+			if(Army.at(i)->getIsTapped()){
+				sum+=Army.at(i)->getDefence();
+			}
+		}
+		return sum;
+	}
+	int getKeepDefence(){
+		return Keep.getDefence();
 	}
 };
 

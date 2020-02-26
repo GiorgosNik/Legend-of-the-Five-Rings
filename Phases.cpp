@@ -11,6 +11,7 @@ namespace phases{
 	//	Given.printHand();
 	//	Given.printProvinces();
 	//	Given.resetCashPool();
+	//	Given.undeploy();
 	};
 	void equipPhase(Player& Given){
 		int handNum,armyNum,rez;
@@ -62,7 +63,7 @@ namespace phases{
 		}
 	};
 	void battlePhase(Player& Given,vector<Player*> Players){
-		int selection;
+		int selection,provinceSelection,armySelection;
 		string input;
 		Player* target;
 		vector<Personality*> toAttack;
@@ -78,7 +79,7 @@ namespace phases{
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
 		if(input=="Y"){
-		for(int h=0;h<Players.size();h++){		////Loop to Print Players Numbered
+		for(int h=0;h<Players.size();h++){			//Loop to Print Players Numbered
 			cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
 		}
 		cout<<"Who do you want to target?"<<endl;
@@ -93,8 +94,27 @@ namespace phases{
 		target=Players.at(selection-1);
 		target->printProvincesNumbered();
 		cout<<"Select a province to Attack: "<<endl;
+		Players.at(selection-1)->printProvincesNumbered();
+		cin>>provinceSelection;
+		while(provinceSelection>Players.at(selection)->getProvinceNumber()||provinceSelection<=0){	//Input Guard for provinceSelection
+		cout<<"Bad input, please try again."<<endl;
+		cin>>provinceSelection;
 		}
+		do{
+			cout<<"Select Personalities to attack with, Select 0 to commence the Attack:"<<endl;
+			Given->printTappedArmyNumbered();
+			cin>>armySelection;
+			while(armySellection<0||armySellection>Given->getTappedNumber()){
+				cout<<"Bad input, please try again"<<endl;
+				cin>>armySellection;
+			}
+		}while(armySellection!=0);
 		
+		
+		
+		
+		
+		}
 	};
 	void economyPhase(Player& Given){
 		
