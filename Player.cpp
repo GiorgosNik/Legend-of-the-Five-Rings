@@ -17,8 +17,9 @@ private:
     list<BlackCard*> Dynasty;
     vector<GreenCard*> handCards;	//my change
     vector<BlackCard*> provinces;
+    vector<Holding*>	Holdings;	//my change
     vector<Personality*> Army;
-    vector<Personality*> Deployed;		//Mine 
+    //vector<Personality*> Deployed;		//Mine 
     Stronghold* Keep;		//my aadition
 public:
     Player(int handCards)
@@ -151,14 +152,14 @@ public:
 			Keep->tapp();
 			return true;
 		}
-		for(int i=0;i<provinces.size();i++){
-			if(provinces.at(i)->getIsTapped()==false){ //Adding Harvest of untapped provinces to cumulative
-				cumulative+=provinces.at(i)->getHarvestValue();
+		for(int i=0;i<Holdings.size();i++){
+			if(Holdings.at(i)->getIsTapped()==false){ //Adding Harvest of untapped provinces to cumulative
+				cumulative+=Holdings.at(i)->getHarvestValue();
 				if(cumulative>=cost){	//If it becomes enough
 					balance=cumulative-cost;
 					Keep->tapp();
 					for(j=0;j<=i;j++){
-						provinces.at(j)->tapp();
+						Holdings.at(j)->tapp();
 					}
 					return true;
 				}
@@ -180,7 +181,7 @@ public:
 	int getProvinceNumber{
 		return numOfProvinces;
 	}
-	void deploy(int sellection){
+	bool deploy(int sellection){
 		int i=0;
 		int j=0;
 		while(j<selection){
@@ -188,15 +189,22 @@ public:
 				j++;
 			}
 		}
+		for(int k=0;k<Deployed.size();k++){
+			if(Army.at(i)==Deployed.at(k)){
+				return false;
+			}
+		}
+		
 		Deployed.push_back(Army.at(i));
+		return true;
 	}
 	void undeploy(){
 		Deployed.clear();
 	}
-	int getTappedNumber(){
+	int getUnTappedNumber(){
 		int	num;
 		for(int i=0;i<Army.size();i++){
-			if(Army.at(i)->getIsTapped()){
+			if(Army.at(i)->getIsUnTapped()){
 				num++;
 			}
 		}
@@ -209,17 +217,35 @@ public:
 		}
 		return sum;
 	}
-	int getTappedDefence(){
+	int getDeployedDefence(){
 		int sum=0;
-		for(int i=0;i<Army.size();i++){
-			if(Army.at(i)->getIsTapped()){
-				sum+=Army.at(i)->getDefence();
-			}
+		for(int i=0;i<Deployed.size();i++){
+			sum+=Deployed.at(i)->getDefence();
 		}
 		return sum;
 	}
 	int getKeepDefence(){
 		return Keep.getDefence();
+	}
+	void killArmy(){
+		for(int i=0;i<Deployed.size();i++){
+			Deployed.at(i)->setDeath();
+		}
+	}
+	void killProvince(int toKill){
+		toKill--;
+		//later
+	}
+	void killAtLeast(int points){
+		//later
+	}
+	void loseAttack(){
+		for(int i=0;i<Deployed.size();i++){
+			Deployed.at(i)->defeat();
+		}
+	}
+	void removeDead(){
+
 	}
 };
 

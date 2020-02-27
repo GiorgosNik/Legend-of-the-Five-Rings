@@ -63,19 +63,25 @@ namespace phases{
 		}
 	};
 	void battlePhase(Player& Given,vector<Player*> Players){
-		int selection,provinceSelection,armySelection;
+		int selection,provinceSelection,armySelection,attackScore,defenceScore;
 		string input;
 		Player* target;
 		vector<Personality*> toAttack;
-		Given.printArmyNumberedUntapped();
-		cout<<"Select Personalities to tapp, select 0 to finish selection."<<endl;
-		cin>>selection;
-		while(selection!=0){
-			Given.tapArmy(selection-1);
-			cout<<endl<<endl<<endl<<endl<<endl;
-			Given.printArmyNumberedUntapped();
-		}
-		cout<<"Army Sellection Complete"<<endl;
+		do{	//Deployment Sellection
+			cout<<"Select Personalities to use in Battles, Select 0 to confirm:"<<endl;
+			Given->printUntappedArmyNumbered();
+			cin>>armySelection;
+			while(armySellection<0||armySellection>Given->getUnTappedNumber()){	//Input Guard for armySelection
+				cout<<"Bad input, please try again"<<endl;
+				cin>>armySellection;
+			}
+			if(Given.deploy(armySellection)){
+				cout<<"Personality added to Battle Force"<<endl;
+			}else{
+				cout<<"Personality already added"<<endl;
+			}
+		}while(armySellection!=0);
+		
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
 		if(input=="Y"){
@@ -100,20 +106,28 @@ namespace phases{
 		cout<<"Bad input, please try again."<<endl;
 		cin>>provinceSelection;
 		}
-		do{
-			cout<<"Select Personalities to attack with, Select 0 to commence the Attack:"<<endl;
-			Given->printTappedArmyNumbered();
-			cin>>armySelection;
-			while(armySellection<0||armySellection>Given->getTappedNumber()){
-				cout<<"Bad input, please try again"<<endl;
-				cin>>armySellection;
-			}
-		}while(armySellection!=0);
-		
-		
-		
-		
-		
+		attackScore=Given.getDeployedAttack();
+		defenceScore=Players.at(selection)->getDeployedDefence();
+		if(attackScore>defenceScore){
+			cout<<"Victory: Province Destroyed"<<endl;
+			Players.at(selection-1)->killProvince(provinceSelection);
+			Players.at(selection-1)->killArmy();
+		}else if(attackScore>defenceScore-Players.at(selection-1)->getKeepDefence()){
+			cout<<"Your army could not destroy the Province, but destroyed the enemy Army"<<endl;
+			Players.at(selection-1)->killArmy();
+			Given.killAtLeast(attackScore-defenceScore-Players.at(selection-1)->getKeepDefence());
+			Given.loseAttack();
+		}else if(attackScore==defenceScore-Players.at(selection-1)->getKeepDefence()){
+			cout<<"Both Armies Destroyed"<<endl;
+			Players.at(selection-1)->killArmy();
+			Given.killArmy();
+		}else{
+			cout<<"Defeat: Your army was destroyed"<<endl;
+			Given.killArmy();
+			Players.at(selection)->killAtLeast(defenceScore+Players.at(selection-1)->getKeepDefence-attackScore);
+		}
+		Given.removeDead();
+		Players.at(selection)->removeDead();
 		}
 	};
 	void economyPhase(Player& Given){

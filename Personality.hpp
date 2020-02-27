@@ -29,6 +29,8 @@ class Personality:public BlackCard{
 		int getType();
 		bool getItemNumber();
 		bool getFollowerNumber();
+		void defeat();
+		void performSepuku();
 		virtual void print();
 };
 class Attacker:public Personality{

@@ -30,6 +30,17 @@ void Personality::print(){
 	}
 	
 }
+void Personality::defeat(){
+	//decrease durability
+	honour--;
+	if(honour=0){
+		performSepuku();
+	}
+}
+void Personality::performSepuku(){
+	cout<<"Your faithfull servant: "<<getName()<<" has performed Sepuku to cleanse his honour"<<endl;
+	setDeath();
+}
 int Personality::getAttack(){
 	return attack;
 }
