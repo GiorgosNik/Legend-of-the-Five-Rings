@@ -8,50 +8,26 @@
 #include <list>
 #include "Player.hpp"
 #include "TypeConverter.hpp"
+#include "DeckBuilder.hpp"
 using namespace std;
 
-/*class Player 
-{
-private:
-	string Name; //my adition
-	int honour;
-    int numOfProvinces = 4;
-    int balance = 0;
-    list<GreenCard*> Fate;		
-    list<BlackCard*> Dynasty;
-    vector<GreenCard*> handCards;	//my change
-    vector<BlackCard*> provinces;
-    vector<Holding*>	Holdings;	//my change
-    vector<Personality*> Army;
-    vector<Personality*> Deployed;		//Mine 
-    vector<Personality*> Graveyard;		//Mine
-    Stronghold* Keep;		//my aadition
-public:*/
-Player::Player(int handCards)
-{
-//	playerDeck = new DeckBuilder();
-	 //nomizw xreiazetai mia function pou pernaei tis listes me tis kartes stis listes tou ekastote paikth (isws enan getter pou na epistrefei poia timh thes apo tis private lists tou deckBuilder)
 
-//	playerDeck.green.
-}
-	
-/*int Player::getBalance()
-{
-    return balance;
+Player::Player(int cardsAtHand,string name):Name(name){
+DeckBuilder builder;
+fateDeck=builder.createFateDeck();
+dynastyDeck=builder.createDynastyDeck();
+builder.deckShuffler(fateDeck);
+builder.deckShuffler(dynastyDeck);
+Keep=new Stronghold("Demonic Castle");
+
 }
 
-/*void Player::setBalance(int bal)
-{
-    balance = bal;
-    cout << "Balance set to: ", getBalance(), ".";
-}*/
-
-/*int Player::getHonour()
+int Player::getHonour()
 {
     return honour;
-}*
+}
 
-/*void Player::setHonour(int hon)
+/*void Player::setHonour(int hon)		//fuck sake
 {
     honour = hon;
     cout << "Honour set to: ", getHonour(), ".";
@@ -105,34 +81,12 @@ Player::Player(int handCards)
     cout << "Player Cards Untapped."
 }*/
 
-/*void Player::drawFateCard()
+void Player::drawFateCard()
 {
     handCards.push_back(fateDeck.front());      //puts first item of fate deck to hand
-    fateDeck.pop_back(fateDeck.front());        //removes first card of fateDeck from list
+    fateDeck.pop_back();        //removes first card of fateDeck from list
 }
 
-void Player::buyProvince()
-{
-    for(int n : Dynasty)
-    {
-        if(Dynasty[n].isProvince)       //to Dynasty[n] einai ok gia access element? 
-        {
-            Dynasty[n].print();
-            cout << "Buy province? (1 : Yes/0 : No)";
-            int choice;
-            cin >> choice;
-            if (choice == 1 && Dynasty[n].getPrice <= balance)
-        	{
-            provinces.pushback(Dynasty[n]);
-            dynastyDeck.erase(Dynasty[n]);
-            balance = balance - Dynasty[n].getPrice()  //leipei h synarthsh getPrice
-        	}
-
-        }
-
-    }
-
-}*/
     //----------------------------------MINE------------------------------------
     bool Player::isArmyEmpty(){
     	return Army.empty();
@@ -327,6 +281,9 @@ void Player::buyProvince()
 				Army.erase(Army.begin()+i);
 			}
 		}
+	}
+	GreenCard* Player::getCardAt(int index){
+		return handCards.at(index);
 	}
 
 

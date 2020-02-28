@@ -9,13 +9,13 @@ namespace phases{
 	//	Given.untapEverything();		//here
 	//	Given.drawFateCard();
 	//	Given.revealProvinces();		//here
-	//	Given.printHand();
-	//	Given.printProvinces();
-	//	Given.resetCashPool();
-	//	Given.undeploy();
+		Given.printHandNumbered();
+		Given.printProvincesNumbered();
+		Given.resetCashPool();
+		Given.undeploy();
 	};
-}
-	/*
+
+
 	void equipPhase(Player& Given){
 		int handNum,armyNum,rez;
 		string input;
@@ -28,7 +28,7 @@ namespace phases{
 				cin>>handNum;
 			}
 			if(handNum!=0){
-			if(Given.payment(handCards.at(handNum)->getCost)){
+			if(Given.payment(Given.getCardAt(handNum)->getCost())){
 				cout<<"Do you want to upgrade? Y/N"<<endl;
 				cin>>input;										//Upgrade Green Card? 
 				while(input!="Y"&&input!="N"){					//Input Guard for input
@@ -72,18 +72,18 @@ namespace phases{
 		vector<Personality*> toAttack;
 		do{	//Deployment Sellection
 			cout<<"Select Personalities to use in Battles, Select 0 to confirm:"<<endl;
-			Given->printUntappedArmyNumbered();
+			Given.printUntappedArmyNumbered();
 			cin>>armySelection;
-			while(armySellection<0||armySellection>Given->getUnTappedNumber()){	//Input Guard for armySelection
+			while(armySelection<0||armySelection>Given.getUnTappedNumber()){	//Input Guard for armySelection
 				cout<<"Bad input, please try again"<<endl;
-				cin>>armySellection;
+				cin>>armySelection;
 			}
-			if(Given.deploy(armySellection)){
+			if(Given.deploy(armySelection)){
 				cout<<"Personality added to Battle Force"<<endl;
 			}else{
 				cout<<"Personality already added"<<endl;
 			}
-		}while(armySellection!=0);
+		}while(armySelection!=0);
 		
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
@@ -92,8 +92,8 @@ namespace phases{
 			cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
 		}
 		cout<<"Who do you want to target?"<<endl;
-		cint>>selection;
-		while(*(Players.at(selection-1))=Given){	//Input Guard for selection
+		cin>>selection;
+		while((Players.at(selection-1))==&Given){	//Input Guard for selection
 			cout<<"You cannot attack yourself, please select someone else:"<<endl;
 			for(int h=0;h<Players.size();h++){  //Loop to Print Players Numbered
 				cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
@@ -127,7 +127,7 @@ namespace phases{
 		}else{
 			cout<<"Defeat: Your army was destroyed"<<endl;
 			Given.killArmy();
-			Players.at(selection)->killAtLeast(defenceScore+Players.at(selection-1)->getKeepDefence-attackScore);
+			Players.at(selection)->killAtLeast(defenceScore+Players.at(selection-1)->getKeepDefence()-attackScore);
 		}
 		Given.removeDead();
 		Players.at(selection)->removeDead();
@@ -137,5 +137,5 @@ namespace phases{
 	};
 	void finalPhase(Player& Given){
 		
-	}
-}*/
+	};
+};

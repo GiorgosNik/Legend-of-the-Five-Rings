@@ -11,29 +11,21 @@ class Player{
 
 
 private:
-    /*int honour;
-    int balance = 0;
-    list<GreenCard *> fateDeck;        
-    list<BlackCard *> dynastyDeck;
-    vector <Card> handCards;
-    vector <dynastyCard> provinces;
-    vector <Holdings> holdings;
-    vector <Personalities> army;*/
-    string Name; //my adition
+    string Name;
 	int honour;
     int numOfProvinces = 4;
-    int balance = 0;
-    list<GreenCard*> Fate;		
-    list<BlackCard*> Dynasty;
-    vector<GreenCard*> handCards;	//my change
+    int balance;
+    list<GreenCard*> fateDeck;		
+    list<BlackCard*> dynastyDeck;
+    vector<GreenCard*> handCards;
     vector<BlackCard*> provinces;
-    vector<Holding*>	Holdings;	//my change
+    vector<Holding*>	Holdings;
     vector<Personality*> Army;
-    vector<Personality*> Deployed;		//Mine 
-    vector<Personality*> Graveyard;		//Mine
-    Stronghold* Keep;		//my aadition
+    vector<Personality*> Deployed;
+    vector<Personality*> Graveyard;
+    Stronghold* Keep;
 public:
-    Player(int handCards);
+    Player(int cardsAtHand,string name);
     int getBalance();
     void setBalance();
     void printName();
@@ -68,4 +60,5 @@ public:
 	void killAtLeast(int points);
 	void loseAttack();
 	void removeDead();
+	GreenCard* getCardAt(int index);
 };
