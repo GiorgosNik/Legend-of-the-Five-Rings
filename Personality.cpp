@@ -34,7 +34,7 @@ void Personality::detach(Item* toRemove){
 	int i=0;
 	while(i<Arsenal.size()){
 		if(Arsenal.at(i)==toRemove){
-			Arsenal.erase(i);
+			Arsenal.erase(Arsenal.begin()+i);
 			break;
 		}
 		i++;
@@ -44,7 +44,7 @@ void Personality::killFollower(Follower* toRemove){
 	int i=0;
 	while(i<Retinue.size()){
 		if(Retinue.at(i)==toRemove){
-			Retinue.erase(i);
+			Retinue.erase(Retinue.begin()+i);
 			break;
 		}
 		i++;

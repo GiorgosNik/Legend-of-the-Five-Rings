@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Personality.hpp"
+#include "Player.hpp"
 class Player;	//TEMP
 using namespace std;
 namespace phases{
@@ -13,11 +14,13 @@ namespace phases{
 	//	Given.resetCashPool();
 	//	Given.undeploy();
 	};
+}
+	/*
 	void equipPhase(Player& Given){
 		int handNum,armyNum,rez;
 		string input;
-		if(Given.isArmyEmpy()==false){
-			Given.prinHandNumbered();
+		if(Given.isArmyEmpty()==false){
+			Given.printHandNumbered();
 			cout<<"Select a Fate Card with the displayed number, select 0 to exit"<<endl;
 			cin>>handNum;									//Select Green Card
 			while(handNum<0||handNum>Given.getHandSize()){	//Input Guard for handNum
@@ -135,4 +138,4 @@ namespace phases{
 	void finalPhase(Player& Given){
 		
 	}
-}
+}*/

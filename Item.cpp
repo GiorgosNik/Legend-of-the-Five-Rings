@@ -15,7 +15,7 @@ void Item::damage(){
 	durability--;
 }
 int Item::getDurability(){
-	return durability();
+	return durability;
 }
 
 Katana::Katana(string GivenName):Item(GivenName,0,2,0,1,"SAMPLETEXT",1,2,3){}

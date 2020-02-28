@@ -3,10 +3,14 @@
 #include "GreenCard.hpp"
 #include "BlackCard.hpp"
 #include "Holding.hpp"
+#include "Personality.hpp"
 #include "Stronghold.hpp"
+#include <list>
+#include "Player.hpp"
+#include "TypeConverter.hpp"
 using namespace std;
 
-class Player 
+/*class Player 
 {
 private:
 	string Name; //my adition
@@ -20,40 +24,40 @@ private:
     vector<Holding*>	Holdings;	//my change
     vector<Personality*> Army;
     vector<Personality*> Deployed;		//Mine 
-    vector<Personality*> Graveyard		//Mine
+    vector<Personality*> Graveyard;		//Mine
     Stronghold* Keep;		//my aadition
-public:
+public:*/
 Player::Player(int handCards)
 {
-	playerDeck = new DeckBuilder();
+//	playerDeck = new DeckBuilder();
 	 //nomizw xreiazetai mia function pou pernaei tis listes me tis kartes stis listes tou ekastote paikth (isws enan getter pou na epistrefei poia timh thes apo tis private lists tou deckBuilder)
 
-	playerDeck.green.
+//	playerDeck.green.
 }
 	
-int Player::getBalance()
+/*int Player::getBalance()
 {
     return balance;
 }
 
-void Player::setBalance(int bal)
+/*void Player::setBalance(int bal)
 {
     balance = bal;
     cout << "Balance set to: ", getBalance(), ".";
-}
+}*/
 
-int Player::getHonour()
+/*int Player::getHonour()
 {
     return honour;
-}
+}*
 
-void Player::setHonour(int hon)
+/*void Player::setHonour(int hon)
 {
     honour = hon;
     cout << "Honour set to: ", getHonour(), ".";
-}
+}*/
 
-void Player::loseProvince(string name)
+/*void Player::loseProvince(string name)
 {
     vector<dynastyCard>::iterator it_provinces; //dynDeck iterator
     for(it_provinces = provinces.begin(); it_provinces < it_provinces.end(); it_provinces ++)
@@ -64,16 +68,16 @@ void Player::loseProvince(string name)
             provinces.erase(it_dynastyDeck); //removes pointer to card from provinces vector
         }
     }
-}
+}*/
 
-void Player::untapEverything() {
+/*void Player::untapEverything() {
 //thelei enan setter gia na allazei thn katastash isTapped stis kartes
 /* ******************************************* */
 //auta mporei kai na mhn xreiazetai na ginoun untapped
-    vector<GreenCard *>::iterator it_fateDeck;
-    vector<BlackCard *>::iterator it_dynastyDeck;
+//    vector<GreenCard *>::iterator it_fateDeck;
+ //   vector<BlackCard *>::iterator it_dynastyDeck;
 /* ******************************************* */
-    vector<Card>::iterator it_handCards; //to untap handCards, mporei kai na mhn xreiazetai
+ /*   vector<Card>::iterator it_handCards; //to untap handCards, mporei kai na mhn xreiazetai
     vector<dynastyCard>::iterator it_provinces; //to untap provinces
     vector<Holdings>::iterator it_holdings; //to untap holdings
     vector<Personalities>::iterator it_army; //to untap army cards
@@ -99,9 +103,9 @@ void Player::untapEverything() {
         *it_army.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
     }
     cout << "Player Cards Untapped."
-}
+}*/
 
-void Player::drawFateCard()
+/*void Player::drawFateCard()
 {
     handCards.push_back(fateDeck.front());      //puts first item of fate deck to hand
     fateDeck.pop_back(fateDeck.front());        //removes first card of fateDeck from list
@@ -128,53 +132,54 @@ void Player::buyProvince()
 
     }
 
-}
+}*/
     //----------------------------------MINE------------------------------------
-    bool isArmyEmpty(){
+    bool Player::isArmyEmpty(){
     	return Army.empty();
 	}
-	void resetCashPool(){
+	void Player::resetCashPool(){
 		balance=0;
 	}
-	void printHandNumbered(){
-		for(i=0;i<handCards.size();i++){
+	void Player::printHandNumbered(){
+		for(int i=0;i<handCards.size();i++){
 			cout<<i+1<<": ";
 			handCards.at(i)->print();
 		}
 	}
-	int getHandSize(){
+	int Player::getHandSize(){
 		return handCards.size();
 	}
-	void printArmyNumbered(){
-		for(i=0;i<Army.size();i++){
+	void Player::printArmyNumbered(){
+		for(int i=0;i<Army.size();i++){
 			cout<<i+1<<": ";
 			Army.at(i)->print();
 		}
 	}
-	int getArmySize(){
+	int Player::getArmySize(){
 		return handCards.size();
 	}
-	int assignToArmy(int handNum,int armyNum){
-		if(handCard.at(handNum-1)->getminHonour>Army.at(armyNum-1)->getHonour){
+	int Player::assignToArmy(int handNum,int armyNum){
+		TypeConverter converter;
+		if(handCards.at(handNum-1)->getminHonour()>Army.at(armyNum-1)->getHonour()){
 			return 0;
 		}
-		if(getItem(handCards.at(handNum-1))!=NULL){
+		if(converter.getItem(handCards.at(handNum-1))!=NULL){
 			if(Army.at(armyNum-1)->getItemNumber()==false){
 				return 1;
 			}
-			Army.at(armyNum-1)->giveItem(*handCards.at(handNum-1));
+			Army.at(armyNum-1)->giveItem(*converter.getItem(handCards.at(handNum-1)));
 		}else{
 			if(Army.at(armyNum-1)->getFollowerNumber()==false){
 				return 2;
 			}
-			Army.at(armyNum-1)->giveFollower(*handCards.at(handNum-1));
+			Army.at(armyNum-1)->giveFollower(*converter.getFollower(handCards.at(handNum-1)));
 			return 3;
 		}
 		
 	}
-	void printTappedArmyNumbered(){
-		j=1;
-		for(i=0;i<Army.size();i++){
+	void Player::printTappedArmyNumbered(){
+		int j=1;
+		for(int i=0;i<Army.size();i++){
 			if(Army.at(i)->getIsTapped()){
 				cout<<j<<": ";
 				j++;
@@ -182,9 +187,9 @@ void Player::buyProvince()
 			}
 		}
 	}
-	void printUntappedArmyNumbered(){
-		j=1;
-		for(i=0;i<Army.size();i++){
+	void Player::printUntappedArmyNumbered(){
+		int j=1;
+		for(int i=0;i<Army.size();i++){
 			if(Army.at(i)->getIsTapped()!=true){
 				cout<<j<<": ";
 				j++;
@@ -192,15 +197,15 @@ void Player::buyProvince()
 			}
 		}
 	}
-	void tapArmy(int toTap){
+	void Player::tapArmy(int toTap){
 		Army.at(toTap)->tapp();
 	}
-	void printName(){
-		cout<<name;
+	void Player::printName(){
+		cout<<Name;
 	}
-	void printProvincesNumbered(){
+	void Player::printProvincesNumbered(){
 		for(int i=0;i<provinces.size();i++){
-			if(provinces.at(i)->getIsTapped==false){
+			if(provinces.at(i)->getIsTapped()==false){
 			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;	
 			}else{
 				cout<<i+1<<"Province is hidden"<<endl;
@@ -208,7 +213,7 @@ void Player::buyProvince()
 			
 		}
 	}
-	bool payment(int cost){
+	bool Player::payment(int cost){
 		int cumulative;
 		cumulative=balance;
 		if(Keep->getIsTapped()==false){
@@ -225,7 +230,7 @@ void Player::buyProvince()
 				if(cumulative>=cost){	//If it becomes enough
 					balance=cumulative-cost;
 					Keep->tapp();
-					for(j=0;j<=i;j++){
+					for(int j=0;j<=i;j++){
 						Holdings.at(j)->tapp();
 					}
 					return true;
@@ -234,21 +239,18 @@ void Player::buyProvince()
 		}
 		return false;
 	}
-	bool upgradeHand(int handNum){
+	bool Player::upgradeHand(int handNum){
 		if(payment(handCards.at(handNum-1)->getCost())){
-			handCards.at(handNum-1)->
+			handCards.at(handNum-1)->giveBonus();
+			return true;
+		}else{
+			return false;
 		}
 	}
-	void printProvincesNumbered(){
-		for(int i=0;i<provinces.size();i++){
-			cout<<i+1<<": ";
-			provinces.at(i)->print();
-		}
-	}
-	int getProvinceNumber{
+	int Player::getProvinceNumber(){
 		return numOfProvinces;
 	}
-	bool deploy(int sellection){
+	bool Player::deploy(int selection){
 		int i=0;
 		int j=0;
 		while(j<selection){
@@ -265,66 +267,66 @@ void Player::buyProvince()
 		Deployed.push_back(Army.at(i));
 		return true;
 	}
-	void undeploy(){
+	void Player::undeploy(){
 		Deployed.clear();
 	}
-	int getUnTappedNumber(){
+	int Player::getUnTappedNumber(){
 		int	num;
 		for(int i=0;i<Army.size();i++){
-			if(Army.at(i)->getIsUnTapped()){
+			if(Army.at(i)->getIsTapped()==false){
 				num++;
 			}
 		}
 		return num;
 	}
-	int getDeployedAttack(){
+	int Player::getDeployedAttack(){
 		int sum=0;
 		for(int i=0;i<Deployed.size();i++){
 			sum+=Deployed.at(i)->getAttack();
 		}
 		return sum;
 	}
-	int getDeployedDefence(){
+	int Player::getDeployedDefence(){
 		int sum=0;
 		for(int i=0;i<Deployed.size();i++){
 			sum+=Deployed.at(i)->getDefence();
 		}
 		return sum;
 	}
-	int getKeepDefence(){
-		return Keep.getDefence();
+	int Player::getKeepDefence(){
+		return Keep->getDefence();
 	}
-	void killArmy(){
+	void Player::killArmy(){
 		for(int i=0;i<Deployed.size();i++){
 			Deployed.at(i)->setDeath();
 		}
 	}
-	void killProvince(int toKill){
+	void Player::killProvince(int toKill){
 		toKill--;
 		//later
 	}
-	void killAtLeast(int points){
+	void Player::killAtLeast(int points){
 		int i=0;
 		while(i<Deployed.size()&&points>0){
 			points=Deployed.at(i)->removeAtLeast(points);
 			if(points>0){
-				Deployed.at(i)->setDeat();
+				Deployed.at(i)->setDeath();
 			}
 			i++;
 		}
 	}
-	void loseAttack(){
+	void Player::loseAttack(){
 		for(int i=0;i<Deployed.size();i++){
 			Deployed.at(i)->defeat();
 		}
 	}
-	void removeDead(){
+	void Player::removeDead(){
 		for(int i=0;i<Army.size();i++){
 			if(Army.at(i)->getIsAlive()==false){
 				Graveyard.push_back(Army.at(i));
-				Army.erase(i);
+				Army.erase(Army.begin()+i);
 			}
 		}
 	}
-};
+
 
