@@ -131,7 +131,6 @@ namespace phases{
 		}
 	};
 	void economyPhase(Player& Given){
-		
 	};
 	void finalPhase(Player& Given){
 		

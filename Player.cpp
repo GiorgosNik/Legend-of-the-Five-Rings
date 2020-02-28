@@ -19,54 +19,116 @@ private:
     vector<BlackCard*> provinces;
     vector<Holding*>	Holdings;	//my change
     vector<Personality*> Army;
-    //vector<Personality*> Deployed;		//Mine 
+    vector<Personality*> Deployed;		//Mine 
+    vector<Personality*> Graveyard		//Mine
     Stronghold* Keep;		//my aadition
 public:
-    Player(int handCards)
-	{
-		
-	}
+Player::Player(int handCards)
+{
+	playerDeck = new DeckBuilder();
+	 //nomizw xreiazetai mia function pou pernaei tis listes me tis kartes stis listes tou ekastote paikth (isws enan getter pou na epistrefei poia timh thes apo tis private lists tou deckBuilder)
 
-    void loseProvince()
+	playerDeck.green.
+}
+	
+int Player::getBalance()
+{
+    return balance;
+}
+
+void Player::setBalance(int bal)
+{
+    balance = bal;
+    cout << "Balance set to: ", getBalance(), ".";
+}
+
+int Player::getHonour()
+{
+    return honour;
+}
+
+void Player::setHonour(int hon)
+{
+    honour = hon;
+    cout << "Honour set to: ", getHonour(), ".";
+}
+
+void Player::loseProvince(string name)
+{
+    vector<dynastyCard>::iterator it_provinces; //dynDeck iterator
+    for(it_provinces = provinces.begin(); it_provinces < it_provinces.end(); it_provinces ++)
+    {
+        if(*it_provinces.getName() == name)
+        {
+            cout << name, "Card found! Removing..";
+            provinces.erase(it_dynastyDeck); //removes pointer to card from provinces vector
+        }
+    }
+}
+
+void Player::untapEverything() {
+//thelei enan setter gia na allazei thn katastash isTapped stis kartes
+/* ******************************************* */
+//auta mporei kai na mhn xreiazetai na ginoun untapped
+    vector<GreenCard *>::iterator it_fateDeck;
+    vector<BlackCard *>::iterator it_dynastyDeck;
+/* ******************************************* */
+    vector<Card>::iterator it_handCards; //to untap handCards, mporei kai na mhn xreiazetai
+    vector<dynastyCard>::iterator it_provinces; //to untap provinces
+    vector<Holdings>::iterator it_holdings; //to untap holdings
+    vector<Personalities>::iterator it_army; //to untap army cards
+    cout << "Untapping Cards.. \n";
+
+    for (it_handCards = handCards.begin(); it_handCards < handCards.end(); it_handCards++) 
 	{
-	    //player loses a health point
-        numOfprovinces--;
+        *it_handCards.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
     }
 
-    void untapEverything()
+    for (it_provinces = provinces.begin(); it_provinces < provinces.end(); it_provinces++) 
 	{
-        //change state of all player cards to untapped
+        *it_provinces.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
     }
 
-    void drawFateCard()
+    for (it_holdings = holdings.begin(); it_holdings < holdings.end(); it_holdings++) 
 	{
-		
+        *it_holdings.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
     }
 
-    void buyProvince()
+    for (it_army = army.begin(); it_army < army.end(); it_army++) 
 	{
-        for(int n : dynDeck)
-		{
-            if(dynDeck<n>.isProvince)
-			{
-                
-                cout << "Buy province? (1 : Yes/0 : No)";
-                int choice;
-                cin >> choice;
-                if (choice == 1 && dynDeck<n>.getPrice <= balance)
-				{
-                    provinces.pushback(dynDeck<n>);
-                    //remove card from dyndeck?
-                    //remove money from balance
-                    //increment province counter
+        *it_army.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
+    }
+    cout << "Player Cards Untapped."
+}
 
-                }
+void Player::drawFateCard()
+{
+    handCards.push_back(fateDeck.front());      //puts first item of fate deck to hand
+    fateDeck.pop_back(fateDeck.front());        //removes first card of fateDeck from list
+}
 
-            }
+void Player::buyProvince()
+{
+    for(int n : Dynasty)
+    {
+        if(Dynasty[n].isProvince)       //to Dynasty[n] einai ok gia access element? 
+        {
+            Dynasty[n].print();
+            cout << "Buy province? (1 : Yes/0 : No)";
+            int choice;
+            cin >> choice;
+            if (choice == 1 && Dynasty[n].getPrice <= balance)
+        	{
+            provinces.pushback(Dynasty[n]);
+            dynastyDeck.erase(Dynasty[n]);
+            balance = balance - Dynasty[n].getPrice()  //leipei h synarthsh getPrice
+        	}
 
         }
 
     }
+
+}
     //----------------------------------MINE------------------------------------
     bool isArmyEmpty(){
     	return Army.empty();
@@ -138,7 +200,12 @@ public:
 	}
 	void printProvincesNumbered(){
 		for(int i=0;i<provinces.size();i++){
-			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;
+			if(provinces.at(i)->getIsTapped==false){
+			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;	
+			}else{
+				cout<<i+1<<"Province is hidden"<<endl;
+			}
+			
 		}
 	}
 	bool payment(int cost){
@@ -237,7 +304,14 @@ public:
 		//later
 	}
 	void killAtLeast(int points){
-		//later
+		int i=0;
+		while(i<Deployed.size()&&points>0){
+			points=Deployed.at(i)->removeAtLeast(points);
+			if(points>0){
+				Deployed.at(i)->setDeat();
+			}
+			i++;
+		}
 	}
 	void loseAttack(){
 		for(int i=0;i<Deployed.size();i++){
@@ -245,7 +319,12 @@ public:
 		}
 	}
 	void removeDead(){
-
+		for(int i=0;i<Army.size();i++){
+			if(Army.at(i)->getIsAlive()==false){
+				Graveyard.push_back(Army.at(i));
+				Army.erase(i);
+			}
+		}
 	}
 };
 

@@ -9,7 +9,9 @@ class Item:public GreenCard{
 		Item(string givenName, int givenCost, int givenAttBonus,int givenDefBonus,int givenMinHonnor, string givenTextm,int givenEffectBonus,int givenEffectCost,int givenDurability);
 		Item(const Item& Copy);
 		virtual	~Item();
+		void damage();
 		int getType();
+		int getDurability();
 		virtual void print();
 };
 class Katana:public Item{

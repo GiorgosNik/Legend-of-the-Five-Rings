@@ -30,12 +30,51 @@ void Personality::print(){
 	}
 	
 }
+void Personality::detach(Item* toRemove){
+	int i=0;
+	while(i<Arsenal.size()){
+		if(Arsenal.at(i)==toRemove){
+			Arsenal.erase(i);
+			break;
+		}
+		i++;
+	}
+}
+void Personality::killFollower(Follower* toRemove){
+	int i=0;
+	while(i<Retinue.size()){
+		if(Retinue.at(i)==toRemove){
+			Retinue.erase(i);
+			break;
+		}
+		i++;
+	}
+}
 void Personality::defeat(){
-	//decrease durability
+	for(int i=0;i<Arsenal.size();i++){
+		Arsenal.at(i)->damage();
+		if(Arsenal.at(i)->getDurability()==0){
+			detach(Arsenal.at(i));
+		}
+	}
 	honour--;
 	if(honour=0){
 		performSepuku();
 	}
+	tapp();
+}
+int Personality::removeAtLeast(int points){
+	int i=0;
+	while(i<Retinue.size()&&points>0){
+		points-=Retinue.at(i)->getAttackBonus();
+		killFollower(Retinue.at(i));
+	}
+	i=0;
+	while(i<Arsenal.size()&&points>0){
+		points-=Arsenal.at(i)->getAttackBonus();
+		detach(Arsenal.at(i));
+	}
+	return points;
 }
 void Personality::performSepuku(){
 	cout<<"Your faithfull servant: "<<getName()<<" has performed Sepuku to cleanse his honour"<<endl;

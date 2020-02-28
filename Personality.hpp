@@ -20,6 +20,8 @@ class Personality:public BlackCard{
 		Personality(const Personality& Copy);
 		~Personality();
 		int getAttack();
+		void detach(Item* toRemove);
+		void killFollower(Follower* toRemove);
 		int getDefence();
 		int getHonour();
 		bool getIsAlive();
@@ -31,6 +33,7 @@ class Personality:public BlackCard{
 		bool getFollowerNumber();
 		void defeat();
 		void performSepuku();
+		int removeAtLeast(int points);
 		virtual void print();
 };
 class Attacker:public Personality{
