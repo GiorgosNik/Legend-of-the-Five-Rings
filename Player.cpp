@@ -22,7 +22,7 @@ Keep=new Stronghold("Demonic Castle");
 for(int i=0;i<cardsAtHand;i++){
 	drawFateCard();
 }
-for(int i=0;i<getProvinceNumber();i++){
+for(int i=0;i<4;i++){
 	provinces.push_back(drawDynastyCard());
 }
 }
@@ -35,20 +35,6 @@ void Player::setHonour(){
     honour=Keep->getHonour();
 
 }
-
-/*void Player::loseProvince(string name)
-{
-    vector<dynastyCard>::iterator it_provinces; //dynDeck iterator
-    for(it_provinces = provinces.begin(); it_provinces < it_provinces.end(); it_provinces ++)
-    {
-        if(*it_provinces.getName() == name)
-        {
-            cout << name, "Card found! Removing..";
-            provinces.erase(it_dynastyDeck); //removes pointer to card from provinces vector
-        }
-    }
-}*/
-
 void Player::untapEverything() {
     
 }
@@ -135,6 +121,7 @@ BlackCard* Player::drawDynastyCard(){
 		cout<<Name;
 	}
 	void Player::printProvincesNumbered(){
+		cout<<"Provinces: "<<endl;
 		for(int i=0;i<provinces.size();i++){
 			if(provinces.at(i)->getIsTapped()==false){
 			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;	
@@ -212,6 +199,9 @@ BlackCard* Player::drawDynastyCard(){
 	}
 	int Player::getDeployedAttack(){
 		int sum=0;
+		if(Deployed.empty()){
+		}
+		return 0;
 		for(int i=0;i<Deployed.size();i++){
 			sum+=Deployed.at(i)->getAttack();
 		}
@@ -219,6 +209,8 @@ BlackCard* Player::drawDynastyCard(){
 	}
 	int Player::getDeployedDefence(){
 		int sum=0;
+		if(Deployed.empty())
+		return 0;
 		for(int i=0;i<Deployed.size();i++){
 			sum+=Deployed.at(i)->getDefence();
 		}
@@ -234,7 +226,8 @@ BlackCard* Player::drawDynastyCard(){
 	}
 	void Player::killProvince(int toKill){
 		toKill--;
-		//later
+		cout<<"Province destroyed"<<endl;
+		provinces.erase(provinces.begin()+toKill);
 	}
 	void Player::killAtLeast(int points){
 		int i=0;

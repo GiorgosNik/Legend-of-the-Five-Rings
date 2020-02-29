@@ -2,21 +2,21 @@
 #include <vector>
 #include "Personality.hpp"
 #include "Player.hpp"
-class Player;	//TEMP
+#include "Phases.hpp"
 using namespace std;
-/*namespace phases{
-	void startingPhase(Player& Given){
+
+	void Phases::startingPhase(Player& Given){
 	//	Given.untapEverything();		//here
 	//	Given.drawFateCard();
 	//	Given.revealProvinces();		//here
-		Given.printHandNumbered();
+	//	Given.printHandNumbered();
 		Given.printProvincesNumbered();
 		Given.resetCashPool();
 		Given.undeploy();
-	};
+	}
 
 
-	void equipPhase(Player& Given){
+	void Phases::equipPhase(Player& Given){
 		int handNum,armyNum,rez;
 		string input;
 		if(Given.isArmyEmpty()==false){
@@ -35,7 +35,7 @@ using namespace std;
 					cout<<"Wrong input, please use Y/N"<<endl;
 					cin>>input;
 				}
-				if(input=="Y"){
+				if(input=="Y"||input=="y"){
 					Given.upgradeHand(handNum);		//here
 				}
 				cout<<"Assign to whom?"<<endl;
@@ -64,8 +64,8 @@ using namespace std;
 		}else{
 			cout<<"No army to equip with Items and Followers."<<endl;
 		}
-	};
-	void battlePhase(Player& Given,vector<Player*> Players){
+	}
+	void Phases::battlePhase(Player& Given,vector<Player*>& Players){
 		int selection,provinceSelection,armySelection,attackScore,defenceScore;
 		string input;
 		Player* target;
@@ -78,16 +78,18 @@ using namespace std;
 				cout<<"Bad input, please try again"<<endl;
 				cin>>armySelection;
 			}
-			if(Given.deploy(armySelection)){
+			if(armySelection!=0){
+				if(Given.deploy(armySelection)){
 				cout<<"Personality added to Battle Force"<<endl;
 			}else{
 				cout<<"Personality already added"<<endl;
+			}
 			}
 		}while(armySelection!=0);
 		
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
-		if(input=="Y"){
+		if(input=="Y"||input=="y"){
 		for(int h=0;h<Players.size();h++){			//Loop to Print Players Numbered
 			cout<<h+1<<": ";Players.at(h)->printName();cout<<endl;
 		}
@@ -103,14 +105,15 @@ using namespace std;
 		target=Players.at(selection-1);
 		target->printProvincesNumbered();
 		cout<<"Select a province to Attack: "<<endl;
-		Players.at(selection-1)->printProvincesNumbered();
 		cin>>provinceSelection;
-		while(provinceSelection>Players.at(selection)->getProvinceNumber()||provinceSelection<=0){	//Input Guard for provinceSelection
+		while(provinceSelection-1>target->getProvinceNumber()||provinceSelection<=0){	//Input Guard for provinceSelection
 		cout<<"Bad input, please try again."<<endl;
 		cin>>provinceSelection;
 		}
+		cout<<"Province Selected"<<endl;
 		attackScore=Given.getDeployedAttack();
-		defenceScore=Players.at(selection)->getDeployedDefence();
+		defenceScore=Players.at(selection-1)->getDeployedDefence();
+		defenceScore+=Players.at(selection-1)->getKeepDefence();
 		if(attackScore>defenceScore){
 			cout<<"Victory: Province Destroyed"<<endl;
 			Players.at(selection-1)->killProvince(provinceSelection);
@@ -127,15 +130,15 @@ using namespace std;
 		}else{
 			cout<<"Defeat: Your army was destroyed"<<endl;
 			Given.killArmy();
-			Players.at(selection)->killAtLeast(defenceScore+Players.at(selection-1)->getKeepDefence()-attackScore);
+			Players.at(selection-1)->killAtLeast(defenceScore+Players.at(selection-1)->getKeepDefence()-attackScore);
 		}
 		Given.removeDead();
-		Players.at(selection)->removeDead();
+		Players.at(selection-1)->removeDead();
 		}
-	};
-	void economyPhase(Player& Given){
-	};
-	void finalPhase(Player& Given){
+	}
+	void Phases::economyPhase(Player& Given){
 		
 	};
-};*/
+	void Phases::finalPhase(Player& Given){
+		
+	}

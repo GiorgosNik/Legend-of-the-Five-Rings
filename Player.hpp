@@ -1,3 +1,5 @@
+#ifndef PLAYER
+#define PLAYER
 #include <iostream>
 #include <vector>
 #include <string>
@@ -28,8 +30,7 @@ public:
     Player(int cardsAtHand,string name);
     void printName();
     int getHonour();
-    void loseProvince();
-    void untapEverything();
+    void untapEverything();//
     void drawFateCard();
     BlackCard* drawDynastyCard();
     void buyProvince();
@@ -60,3 +61,4 @@ public:
 	void removeDead();
 	GreenCard* getCardAt(int index);
 };
+#endif		//PLAYER
