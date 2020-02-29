@@ -29,13 +29,15 @@ private:
 public:
     Player(int cardsAtHand,string name);
     void printName();
+    void revealProvinces();
     int getHonour();
-    void untapEverything();//
+    void untapEverything();
     void drawFateCard();
     BlackCard* drawDynastyCard();
     void buyProvince();
     bool isArmyEmpty();
 	void resetCashPool();
+	bool isDeployedEmpty();
 	void printHandNumbered();
 	int getHandSize();
 	void printArmyNumbered();
@@ -44,7 +46,7 @@ public:
 	void printTappedArmyNumbered();
 	void printUntappedArmyNumbered();
 	void tapArmy(int toTap);
-	void printProvincesNumbered();
+	void printProvinces();
 	bool payment(int cost);
 	bool upgradeHand(int handNum);
 	int getProvinceNumber();

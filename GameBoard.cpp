@@ -9,7 +9,7 @@ void GameBoard::initializeGameBoard(){
     	int playerNum,handCards;
     	string givenName;
     	Player* tempPlayer;
-		cout<<"How many Players?"<<endl;
+		cout<<"How many Players will play?"<<endl;
 		cin>>playerNum;
 		cout<<"How many Cards can they have at hand?"<<endl;
 		cin>>handCards;

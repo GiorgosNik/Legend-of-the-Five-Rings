@@ -2,6 +2,7 @@
 #include <vector>
 #include "GreenCard.hpp"
 #include "BlackCard.hpp"
+#include "Item.hpp"
 #include "Holding.hpp"
 #include "Personality.hpp"
 #include "Stronghold.hpp"
@@ -35,13 +36,13 @@ void Player::setHonour(){
     honour=Keep->getHonour();
 
 }
-void Player::untapEverything() {
-    
-}
-
 void Player::drawFateCard(){
-    handCards.push_back(fateDeck->front());
-    fateDeck->pop_back();        
+	GreenCard* test;
+	fateDeck->back()->print();
+	test=fateDeck->back();
+	test->print();
+	handCards.push_back(test);;
+//    fateDeck->pop_back();        
 }
 BlackCard* Player::drawDynastyCard(){
 	BlackCard* toReturn;
@@ -49,7 +50,19 @@ BlackCard* Player::drawDynastyCard(){
 	dynastyDeck->pop_back();
 	return toReturn;
 }
-
+void Player::revealProvinces(){
+	for(int i=0;i<provinces.size();i++){
+		provinces.at(i)->untap();
+	}
+}
+void Player::untapEverything(){
+	for(int i=0;i<Army.size();i++){
+		Army.at(i)->untap();
+	}
+	for(int i=0;i<Holdings.size();i++){
+		Holdings.at(i)->untap();
+	}
+}
 
     bool Player::isArmyEmpty(){
     	return Army.empty();
@@ -61,6 +74,7 @@ BlackCard* Player::drawDynastyCard(){
 		for(int i=0;i<handCards.size();i++){
 			cout<<i+1<<": ";
 			handCards.at(i)->print();
+			cout<<endl;
 		}
 	}
 	int Player::getHandSize(){
@@ -120,7 +134,10 @@ BlackCard* Player::drawDynastyCard(){
 	void Player::printName(){
 		cout<<Name;
 	}
-	void Player::printProvincesNumbered(){
+bool Player::isDeployedEmpty(){
+	return (Deployed.size()==0);
+}
+	void Player::printProvinces(){
 		cout<<"Provinces: "<<endl;
 		for(int i=0;i<provinces.size();i++){
 			if(provinces.at(i)->getIsTapped()==false){

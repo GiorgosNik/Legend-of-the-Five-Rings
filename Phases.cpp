@@ -6,17 +6,17 @@
 using namespace std;
 
 	void Phases::startingPhase(Player& Given){
-	//	Given.untapEverything();		//here
-	//	Given.drawFateCard();
-	//	Given.revealProvinces();		//here
+		cout<<"STARTING  PHASE"<<endl;
+	//	Given.untapEverything();
+		Given.drawFateCard();
+	//	Given.revealProvinces();
+	//	Given.printProvinces();
 	//	Given.printHandNumbered();
-		Given.printProvincesNumbered();
-		Given.resetCashPool();
-		Given.undeploy();
+	//	Given.resetCashPool();
+	//	Given.undeploy();
 	}
-
-
 	void Phases::equipPhase(Player& Given){
+		cout<<"EQUIP PHASE"<<endl;
 		int handNum,armyNum,rez;
 		string input;
 		if(Given.isArmyEmpty()==false){
@@ -66,10 +66,12 @@ using namespace std;
 		}
 	}
 	void Phases::battlePhase(Player& Given,vector<Player*>& Players){
+		cout<<"BATTLE PHASE"<<endl;
 		int selection,provinceSelection,armySelection,attackScore,defenceScore;
 		string input;
 		Player* target;
 		vector<Personality*> toAttack;
+		if(Given.isArmyEmpty()==false){
 		do{	//Deployment Sellection
 			cout<<"Select Personalities to use in Battles, Select 0 to confirm:"<<endl;
 			Given.printUntappedArmyNumbered();
@@ -87,6 +89,7 @@ using namespace std;
 			}
 		}while(armySelection!=0);
 		
+		if(Given.isDeployedEmpty()==false){
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
 		if(input=="Y"||input=="y"){
@@ -103,7 +106,7 @@ using namespace std;
 			cin>>selection;
 		}
 		target=Players.at(selection-1);
-		target->printProvincesNumbered();
+		target->printProvinces();
 		cout<<"Select a province to Attack: "<<endl;
 		cin>>provinceSelection;
 		while(provinceSelection-1>target->getProvinceNumber()||provinceSelection<=0){	//Input Guard for provinceSelection
@@ -135,10 +138,18 @@ using namespace std;
 		Given.removeDead();
 		Players.at(selection-1)->removeDead();
 		}
+	}else{
+		cout<<"You are unable to Attack because you did not select any Personalities."<<endl;
+	}
+	}else{
+		cout<<"You have no Personalities to choose from"<<endl;
+	}
 	}
 	void Phases::economyPhase(Player& Given){
-		
+		cout<<"ECONOMY PHASE"<<endl;
+		Given.printProvinces();
 	};
 	void Phases::finalPhase(Player& Given){
-		
+		cout<<"Press ENTER to end your turn..."<<endl;
+		cin.get();
 	}
