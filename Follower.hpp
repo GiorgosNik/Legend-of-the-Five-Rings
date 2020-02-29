@@ -7,7 +7,7 @@ class Follower:public GreenCard{
 	Follower(const Follower& Copy);
 	virtual	~Follower();
 	int getType();
-	virtual	void print();
+	virtual	void print()=0;
 };
 class Footsoldier:public Follower{
 	public:

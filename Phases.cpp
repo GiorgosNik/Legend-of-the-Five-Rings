@@ -4,7 +4,7 @@
 #include "Player.hpp"
 class Player;	//TEMP
 using namespace std;
-namespace phases{
+/*namespace phases{
 	void startingPhase(Player& Given){
 	//	Given.untapEverything();		//here
 	//	Given.drawFateCard();
@@ -138,4 +138,4 @@ namespace phases{
 	void finalPhase(Player& Given){
 		
 	};
-};
+};*/

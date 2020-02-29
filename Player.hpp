@@ -13,10 +13,9 @@ class Player{
 private:
     string Name;
 	int honour;
-    int numOfProvinces = 4;
     int balance;
-    list<GreenCard*> fateDeck;		
-    list<BlackCard*> dynastyDeck;
+    list<GreenCard*>* fateDeck;		
+    list<BlackCard*>* dynastyDeck;
     vector<GreenCard*> handCards;
     vector<BlackCard*> provinces;
     vector<Holding*>	Holdings;
@@ -24,18 +23,17 @@ private:
     vector<Personality*> Deployed;
     vector<Personality*> Graveyard;
     Stronghold* Keep;
+    void setHonour();
 public:
     Player(int cardsAtHand,string name);
-    int getBalance();
-    void setBalance();
     void printName();
     int getHonour();
-    void setHonour();
     void loseProvince();
     void untapEverything();
     void drawFateCard();
+    BlackCard* drawDynastyCard();
     void buyProvince();
-     bool isArmyEmpty();
+    bool isArmyEmpty();
 	void resetCashPool();
 	void printHandNumbered();
 	int getHandSize();

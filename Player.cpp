@@ -19,19 +19,22 @@ dynastyDeck=builder.createDynastyDeck();
 builder.deckShuffler(fateDeck);
 builder.deckShuffler(dynastyDeck);
 Keep=new Stronghold("Demonic Castle");
-
+for(int i=0;i<cardsAtHand;i++){
+	drawFateCard();
+}
+for(int i=0;i<getProvinceNumber();i++){
+	provinces.push_back(drawDynastyCard());
+}
 }
 
-int Player::getHonour()
-{
+int Player::getHonour(){
     return honour;
 }
 
-/*void Player::setHonour(int hon)		//fuck sake
-{
-    honour = hon;
-    cout << "Honour set to: ", getHonour(), ".";
-}*/
+void Player::setHonour(){
+    honour=Keep->getHonour();
+
+}
 
 /*void Player::loseProvince(string name)
 {
@@ -46,48 +49,22 @@ int Player::getHonour()
     }
 }*/
 
-/*void Player::untapEverything() {
-//thelei enan setter gia na allazei thn katastash isTapped stis kartes
-/* ******************************************* */
-//auta mporei kai na mhn xreiazetai na ginoun untapped
-//    vector<GreenCard *>::iterator it_fateDeck;
- //   vector<BlackCard *>::iterator it_dynastyDeck;
-/* ******************************************* */
- /*   vector<Card>::iterator it_handCards; //to untap handCards, mporei kai na mhn xreiazetai
-    vector<dynastyCard>::iterator it_provinces; //to untap provinces
-    vector<Holdings>::iterator it_holdings; //to untap holdings
-    vector<Personalities>::iterator it_army; //to untap army cards
-    cout << "Untapping Cards.. \n";
-
-    for (it_handCards = handCards.begin(); it_handCards < handCards.end(); it_handCards++) 
-	{
-        *it_handCards.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
-    }
-
-    for (it_provinces = provinces.begin(); it_provinces < provinces.end(); it_provinces++) 
-	{
-        *it_provinces.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
-    }
-
-    for (it_holdings = holdings.begin(); it_holdings < holdings.end(); it_holdings++) 
-	{
-        *it_holdings.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
-    }
-
-    for (it_army = army.begin(); it_army < army.end(); it_army++) 
-	{
-        *it_army.setTapped(false); //h setTapped() prepei na ftiaxtei sthn card.cpp
-    }
-    cout << "Player Cards Untapped."
-}*/
-
-void Player::drawFateCard()
-{
-    handCards.push_back(fateDeck.front());      //puts first item of fate deck to hand
-    fateDeck.pop_back();        //removes first card of fateDeck from list
+void Player::untapEverything() {
+    
 }
 
-    //----------------------------------MINE------------------------------------
+void Player::drawFateCard(){
+    handCards.push_back(fateDeck->front());
+    fateDeck->pop_back();        
+}
+BlackCard* Player::drawDynastyCard(){
+	BlackCard* toReturn;
+	toReturn=dynastyDeck->back();
+	dynastyDeck->pop_back();
+	return toReturn;
+}
+
+
     bool Player::isArmyEmpty(){
     	return Army.empty();
 	}
@@ -202,7 +179,7 @@ void Player::drawFateCard()
 		}
 	}
 	int Player::getProvinceNumber(){
-		return numOfProvinces;
+		return provinces.size();
 	}
 	bool Player::deploy(int selection){
 		int i=0;
