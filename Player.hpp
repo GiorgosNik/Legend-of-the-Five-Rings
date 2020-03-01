@@ -16,8 +16,11 @@ private:
     string Name;
 	int honour;
     int balance;
+    DeckBuilder* deck;
     list<GreenCard*>* fateDeck;		
     list<BlackCard*>* dynastyDeck;
+    vector<BlackCard*>* dynastyDeckVector;
+    vector<GreenCard*>* fateDeckVector;
     vector<GreenCard*> handCards;
     vector<BlackCard*> provinces;
     vector<Holding*>	Holdings;

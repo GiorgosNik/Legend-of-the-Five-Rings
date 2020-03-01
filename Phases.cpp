@@ -7,13 +7,13 @@ using namespace std;
 
 	void Phases::startingPhase(Player& Given){
 		cout<<"STARTING  PHASE"<<endl;
-	//	Given.untapEverything();
+		Given.untapEverything();
 		Given.drawFateCard();
-	//	Given.revealProvinces();
-	//	Given.printProvinces();
-	//	Given.printHandNumbered();
-	//	Given.resetCashPool();
-	//	Given.undeploy();
+		Given.revealProvinces();
+		Given.printProvinces();
+		Given.printHandNumbered();
+		Given.resetCashPool();
+		Given.undeploy();
 	}
 	void Phases::equipPhase(Player& Given){
 		cout<<"EQUIP PHASE"<<endl;

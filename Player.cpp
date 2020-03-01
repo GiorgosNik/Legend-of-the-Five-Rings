@@ -14,11 +14,11 @@ using namespace std;
 
 
 Player::Player(int cardsAtHand,string name):Name(name){
-DeckBuilder builder;
-fateDeck=builder.createFateDeck();
-dynastyDeck=builder.createDynastyDeck();
-builder.deckShuffler(fateDeck);
-builder.deckShuffler(dynastyDeck);
+deck=new DeckBuilder;
+fateDeck=deck->createFateDeck();
+dynastyDeck=deck->createDynastyDeck();
+deck->deckShuffler(fateDeck);
+deck->deckShuffler(dynastyDeck);
 Keep=new Stronghold("Demonic Castle");
 for(int i=0;i<cardsAtHand;i++){
 	drawFateCard();
@@ -37,12 +37,12 @@ void Player::setHonour(){
 
 }
 void Player::drawFateCard(){
-	GreenCard* test;
-	fateDeck->back()->print();
-	test=fateDeck->back();
-	test->print();
-	handCards.push_back(test);;
-//    fateDeck->pop_back();        
+	if(fateDeck->empty()==false){
+		handCards.push_back(fateDeck->back());
+    	fateDeck->pop_back();        
+	}else{
+		cout<<"You run out of cards..."<<endl;	//Model Later
+	}
 }
 BlackCard* Player::drawDynastyCard(){
 	BlackCard* toReturn;
