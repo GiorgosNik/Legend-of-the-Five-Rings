@@ -10,7 +10,7 @@ using namespace std;
 	//	Given.drawFateCard();
 	//	Given.revealProvinces();		//here
 	//	Given.printHandNumbered();
-		Given.printProvincesNumbered();
+		Given.printProvinces();
 		Given.resetCashPool();
 		Given.undeploy();
 	}
@@ -103,7 +103,7 @@ using namespace std;
 			cin>>selection;
 		}
 		target=Players.at(selection-1);
-		target->printProvincesNumbered();
+		target->printProvinces();
 		cout<<"Select a province to Attack: "<<endl;
 		cin>>provinceSelection;
 		while(provinceSelection-1>target->getProvinceNumber()||provinceSelection<=0){	//Input Guard for provinceSelection

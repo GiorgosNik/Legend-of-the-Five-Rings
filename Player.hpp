@@ -44,7 +44,7 @@ public:
 	void printTappedArmyNumbered();
 	void printUntappedArmyNumbered();
 	void tapArmy(int toTap);
-	void printProvincesNumbered();
+	void printProvinces();
 	bool payment(int cost);
 	bool upgradeHand(int handNum);
 	int getProvinceNumber();

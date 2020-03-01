@@ -120,7 +120,7 @@ BlackCard* Player::drawDynastyCard(){
 	void Player::printName(){
 		cout<<Name;
 	}
-	void Player::printProvincesNumbered(){
+	void Player::printProvinces(){
 		cout<<"Provinces: "<<endl;
 		for(int i=0;i<provinces.size();i++){
 			if(provinces.at(i)->getIsTapped()==false){
