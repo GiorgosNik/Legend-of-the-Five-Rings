@@ -11,6 +11,18 @@ Holding::~Holding(){
 		delete lowerHolding;
 	}
 }
+bool Holding::crystalLowerChain(){
+	return false;
+}
+bool Holding::goldLowerChain(){
+	return false;
+}
+bool Holding::goldUpperChain(){
+	return false;
+}
+bool Holding::mineUpperChain(){
+	return false;
+}
 Holding* Holding::getLowerHolding(){
 	return lowerHolding;
 }

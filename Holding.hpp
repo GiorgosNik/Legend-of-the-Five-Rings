@@ -17,6 +17,10 @@ class Holding:public BlackCard{
 		Holding* getLowerHolding();
 		Holding* getUpperHolding();
 		int getType();
+		bool crystalLowerChain();
+		bool goldUpperChain();
+		bool goldLowerChain();
+		bool mineUpperChain();
 		virtual void print();
 };
 class GiftsandFavour:public Holding{

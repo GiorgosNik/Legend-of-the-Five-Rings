@@ -6,6 +6,7 @@ using namespace Phases;
 using namespace std;
   GameBoard::GameBoard(){}
 void GameBoard::initializeGameBoard(){
+		cout<<"Seting up Game Board..."<<endl;
     	int playerNum,handCards;
     	string givenName;
     	Player* tempPlayer;
@@ -22,6 +23,7 @@ void GameBoard::initializeGameBoard(){
 		}
     }    
 void GameBoard::gameplay(){
+	cout<<"Press ENTER to start Game."<<endl;
 	Player* current,*temp;
 	int index=0;
 	for(int i=0;i<players.size();i++){
