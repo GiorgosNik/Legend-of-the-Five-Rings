@@ -34,10 +34,11 @@ public:
     void printName();
     void revealProvinces();
     int getHonour();
+    int getProvinceCost(int selection);
     void untapEverything();
     void drawFateCard();
     BlackCard* drawDynastyCard();
-    void buyProvince();
+    void buyProvince(int selection);
     bool isArmyEmpty();
 	void resetCashPool();
 	bool isDeployedEmpty();
@@ -64,6 +65,7 @@ public:
 	void killAtLeast(int points);
 	void loseAttack();
 	void removeDead();
+	bool provinceIsTapped(int selection);
 	GreenCard* getCardAt(int index);
 };
 #endif		//PLAYER

@@ -146,8 +146,26 @@ using namespace std;
 	}
 	}
 	void Phases::economyPhase(Player& Given){
+		int selection;
 		cout<<"ECONOMY PHASE"<<endl;
-		Given.printProvinces();
+		do{
+			Given.printProvinces();
+			cout<<"Select a Province to buy (1-"<<Given.getProvinceNumber()<<"), select 0 to end Economy Phase"<<endl;
+			cin>>selection;
+			while(selection<0||selection>Given.getProvinceNumber()){
+				cout<<"Bad Input. Please try again."<<endl;
+				cin>>selection;
+			}
+			if(selection!=0){
+			
+			if(Given.provinceIsTapped(selection)==false){
+			if(Given.payment(Given.getProvinceCost(selection))){
+				Given.buyProvince(selection);
+			}
+		}
+		}
+		}while(selection!=0);
+		cout<<"ENDING ECONOMY PHASE"<<endl;
 	};
 	void Phases::finalPhase(Player& Given){
 		cout<<"Press ENTER to end your turn..."<<endl;

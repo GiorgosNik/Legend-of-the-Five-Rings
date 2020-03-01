@@ -44,10 +44,15 @@ void Player::drawFateCard(){
 		cout<<"You run out of cards..."<<endl;	//Model Later
 	}
 }
+bool Player::provinceIsTapped(int selection){
+	selection--;
+	return provinces.at(selection)->getIsTapped();
+}
 BlackCard* Player::drawDynastyCard(){
 	BlackCard* toReturn;
 	toReturn=dynastyDeck->back();
 	dynastyDeck->pop_back();
+	toReturn->tapp();
 	return toReturn;
 }
 void Player::revealProvinces(){
@@ -148,8 +153,24 @@ bool Player::isDeployedEmpty(){
 			
 		}
 	}
+void Player::buyProvince(int selection)	{
+	selection--;
+	TypeConverter converter;
+	if(converter.getHolding(provinces.at(selection))!=NULL){
+		Holdings.push_back(converter.getHolding(provinces.at(selection)));
+	}else{
+		Army.push_back(converter.getPersonality(provinces.at(selection)));
+	}
+	provinces.at(selection)=drawDynastyCard();
+	
+}
+int Player::getProvinceCost(int selection){
+	selection--;
+	return provinces.at(selection)->getCost();
+}
 	bool Player::payment(int cost){
-		int cumulative;
+		int cumulative,startingCost;
+		startingCost=cost;
 		cumulative=balance;
 		if(Keep->getIsTapped()==false){
 			cumulative+=Keep->getHarvestValue();
@@ -172,9 +193,11 @@ bool Player::isDeployedEmpty(){
 				}
 			}
 		}
+		cout<<"Unable to pay cost: "<<startingCost;
 		return false;
 	}
 	bool Player::upgradeHand(int handNum){
+		handNum--;
 		if(payment(handCards.at(handNum-1)->getCost())){
 			handCards.at(handNum-1)->giveBonus();
 			return true;
@@ -188,17 +211,20 @@ bool Player::isDeployedEmpty(){
 	bool Player::deploy(int selection){
 		int i=0;
 		int j=0;
+		selection--;
 		while(j<selection){
-			if(Army.at(i)->getIsTapped()){
+			if(Army.at(i)->getIsTapped()==false){
 				j++;
+			}else{
+				i++;
 			}
+			
 		}
 		for(int k=0;k<Deployed.size();k++){
 			if(Army.at(i)==Deployed.at(k)){
 				return false;
 			}
-		}
-		
+		}	
 		Deployed.push_back(Army.at(i));
 		return true;
 	}
@@ -270,7 +296,7 @@ bool Player::isDeployedEmpty(){
 		}
 	}
 	GreenCard* Player::getCardAt(int index){
-		return handCards.at(index);
+		return handCards.at(index-1);
 	}
 
 
