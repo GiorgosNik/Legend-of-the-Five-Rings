@@ -3,6 +3,7 @@
 #include <iostream>
 #include "BlackCard.hpp"
 using namespace std;
+enum MINES{MINE=5,GOLDMINE,CRYSTALMINE};
 class Holding:public BlackCard{
 		int harvestValue;
 		Holding* upperHolding;
@@ -17,10 +18,9 @@ class Holding:public BlackCard{
 		Holding* getLowerHolding();
 		Holding* getUpperHolding();
 		int getType();
-		bool crystalLowerChain();
-		bool goldUpperChain();
-		bool goldLowerChain();
-		bool mineUpperChain();
+		virtual int getMineType();
+		bool canChainUp();
+		bool canChainLow();
 		virtual void print();
 };
 class GiftsandFavour:public Holding{
@@ -43,17 +43,24 @@ class Mine:public Holding{
 		Mine(string GivenName);
 		int getHarvestValue();
 		void print();
+		int getMineType();
+		bool canChainUp();
 };
 class GoldMine:public Holding{
 	public:
 		GoldMine(string GivenName);
 		int getHarvestValue();
 		void print();
+		int getMineType();
+		bool canChainLow();
+		bool canChainUp();
 };
 class CrystalMine:public Holding{
 	public:
 		CrystalMine(string GivenName);
 		int getHarvestValue();
 		void print();
+		int getMineType();
+		bool canChainLow();
 };
 #endif		//HOLDINGG

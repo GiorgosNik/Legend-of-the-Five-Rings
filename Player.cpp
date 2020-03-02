@@ -67,6 +67,7 @@ void Player::untapEverything(){
 	for(int i=0;i<Holdings.size();i++){
 		Holdings.at(i)->untap();
 	}
+	Keep->untap();
 }
 
     bool Player::isArmyEmpty(){
@@ -148,9 +149,8 @@ bool Player::isDeployedEmpty(){
 			if(provinces.at(i)->getIsTapped()==false){
 			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;	
 			}else{
-				cout<<i+1<<"Province is hidden"<<endl;
+				cout<<i+1<<": Province is hidden"<<endl;
 			}
-			
 		}
 	}
 void Player::buyProvince(int selection)	{
@@ -158,6 +158,47 @@ void Player::buyProvince(int selection)	{
 	TypeConverter converter;
 	if(converter.getHolding(provinces.at(selection))!=NULL){
 		Holdings.push_back(converter.getHolding(provinces.at(selection)));
+		if(Holdings.back()->getMineType()==0){
+			cout<<"Holding added successfully."<<endl;
+		}else{
+			cout<<"New Holding might be able to form a chain."<<endl<<"Atemtping Now..."<<endl;
+			if(Holdings.back()->getMineType()==MINE){		//New Holding is of type MINE
+				for(int i =0;i<Holdings.size()-1;i++){
+					if(Holdings.at(i)->getMineType()==GOLDMINE&&Holdings.at(i)->canChainLow()){
+						Holdings.at(i)->giveLow(Holdings.back());
+						Holdings.back()->giveUpper(Holdings.at(i));
+						cout<<"Formed a Chain with a Gold Mine."<<endl;
+						break;
+					}
+				}
+			}else if(Holdings.back()->getMineType()==GOLDMINE){
+				for(int i =0;i<Holdings.size()-1;i++){
+					if(Holdings.at(i)->getMineType()==CRYSTALMINE&&Holdings.at(i)->canChainLow()){
+						Holdings.at(i)->giveLow(Holdings.back());
+						Holdings.back()->giveUpper(Holdings.at(i));
+						cout<<"Formed Chain with a Crystal Mine."<<endl;
+						break;
+					}
+				}
+				for(int i =0;i<Holdings.size()-1;i++){
+					if(Holdings.at(i)->getMineType()==MINE&&Holdings.at(i)->canChainUp()){
+						Holdings.at(i)->giveUpper(Holdings.back());
+						Holdings.back()->giveLow(Holdings.at(i));
+						cout<<"Formed a Chain with a Mine."<<endl;
+						break;
+					}
+				}
+			}else{
+				for(int i =0;i<Holdings.size()-1;i++){
+					if(Holdings.at(i)->getMineType()==GOLDMINE&&Holdings.at(i)->canChainUp()){
+						Holdings.at(i)->giveUpper(Holdings.back());
+						Holdings.back()->giveLow(Holdings.at(i));
+						cout<<"Formed a Chain with a Gold Mine."<<endl;
+						break;
+					}
+				}
+			}
+		}
 	}else{
 		Army.push_back(converter.getPersonality(provinces.at(selection)));
 	}

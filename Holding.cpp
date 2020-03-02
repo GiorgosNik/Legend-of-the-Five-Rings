@@ -11,16 +11,10 @@ Holding::~Holding(){
 		delete lowerHolding;
 	}
 }
-bool Holding::crystalLowerChain(){
+bool Holding::canChainLow(){
 	return false;
 }
-bool Holding::goldLowerChain(){
-	return false;
-}
-bool Holding::goldUpperChain(){
-	return false;
-}
-bool Holding::mineUpperChain(){
+bool Holding::canChainUp(){
 	return false;
 }
 Holding* Holding::getLowerHolding(){
@@ -127,4 +121,28 @@ int CrystalMine::getHarvestValue(){
 		}
 	}
 	return rez;
+}
+int Holding::getMineType(){
+	return 0;
+}
+int  CrystalMine::getMineType(){
+	return CRYSTALMINE;
+}
+int Mine::getMineType(){
+	return MINE;
+}
+int GoldMine::getMineType(){
+	return GOLDMINE;
+}
+bool Mine::canChainUp(){
+	return getUpperHolding()==NULL;
+}
+bool GoldMine::canChainLow(){
+	return getLowerHolding()==NULL;
+}
+bool GoldMine::canChainUp(){
+	return getUpperHolding()==NULL;
+}
+bool CrystalMine::canChainLow(){
+	return getLowerHolding()==NULL;
 }
