@@ -10,8 +10,6 @@
 #include "DeckBuilder.hpp"
 #include "Stronghold.hpp"
 class Player{
-
-
 private:
     string Name;
 	int honour;
@@ -25,7 +23,7 @@ private:
     vector<BlackCard*> provinces;
     vector<Holding*>	Holdings;
     vector<Personality*> Army;
-    vector<Personality*> Deployed;
+    vector<Personality*> Arena;
     vector<Personality*> Graveyard;
     Stronghold* Keep;
     void setHonour();
@@ -42,7 +40,7 @@ public:
   void buyProvince(int selection);
   bool isArmyEmpty();
 	void resetCashPool();
-	bool isDeployedEmpty();
+	bool isArenaEmpty();
 	void printHandNumbered();
 	int getHandSize();
 	void printArmyNumbered();
@@ -55,11 +53,11 @@ public:
 	bool payment(int cost);
 	bool upgradeHand(int handNum);
 	int getProvinceNumber();
-	bool deploy(int sellection);
-	void undeploy();
+	bool arena(int sellection);
+	void unarena();
 	int getUnTappedNumber();
-	int getDeployedAttack();
-	int getDeployedDefence();
+	int getArenaAttack();
+	int getArenaDefence();
 	int getKeepDefence();
 	void killArmy();
 	void killProvince(int toKill);

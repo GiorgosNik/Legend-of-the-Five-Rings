@@ -11,7 +11,7 @@ public:
     GameBoard();
     void initializeGameBoard();
     void gameplay();
-    void playPhases(Player& toPlay);
-		bool checkWinningCondition(Player& toPlay);
+    bool playPhases(Player& toPlay);
+	bool checkWinningCondition(Player& toPlay);
 };
 #endif	//GAMEBOARD

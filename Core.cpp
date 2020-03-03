@@ -11,5 +11,7 @@ int main(){
 	GameBoard toPlay;
 	toPlay.initializeGameBoard();
 	toPlay.gameplay();
+	cout<<"Game Over."<<endl;
+	cout<<"Thanks for Playing!!!"<<endl;
 	return 0;
 }

@@ -13,7 +13,7 @@ using namespace std;
 		Given.printProvinces();
 		Given.printHandNumbered();
 		Given.resetCashPool();
-		Given.undeploy();
+		Given.unarena();
 	}
 	void Phases::equipPhase(Player& Given){
 		cout<<endl<<"EQUIP PHASE"<<endl;
@@ -27,7 +27,7 @@ using namespace std;
 				cout<<"Bad input, please try again"<<endl;
 				cin>>handNum;
 			}
-			if(handNum!=0){
+			while(handNum!=0){
 			if(Given.payment(Given.getCardAt(handNum)->getCost())){
 				cout<<"Do you want to upgrade? Y/N"<<endl;
 				cin>>input;										//Upgrade Green Card?
@@ -36,7 +36,7 @@ using namespace std;
 					cin>>input;
 				}
 				if(input=="Y"||input=="y"){
-					Given.upgradeHand(handNum);		//here
+					Given.upgradeHand(handNum);
 				}
 				cout<<"Assign to whom?"<<endl;
 				Given.printArmyNumbered();
@@ -58,9 +58,16 @@ using namespace std;
 			}else{
 				cout<<"Not enought funds"<<endl;
 			}
-		}else{
-			cout<<"Exiting"<<endl;
+			Given.printHandNumbered();
+			cout<<"Select a Fate Card with the displayed number, select 0 to exit"<<endl;
+			cin>>handNum;									//Select Green Card
+			while(handNum<0||handNum>Given.getHandSize()){	//Input Guard for handNum
+				cout<<"Bad input, please try again"<<endl;
+				cin>>handNum;
+			}
 		}
+			cout<<"Exiting"<<endl;
+		
 		}else{
 			cout<<"No army to equip with Items and Followers."<<endl;
 		}
@@ -72,7 +79,7 @@ using namespace std;
 		Player* target;
 		vector<Personality*> toAttack;
 		if(Given.isArmyEmpty()==false){
-		do{	//Deployment Sellection
+		do{	//Arena Sellection
 			cout<<"Select Personalities to use in Battles, Select 0 to confirm:"<<endl;
 			Given.printUntappedArmyNumbered();
 			cin>>armySelection;
@@ -81,15 +88,13 @@ using namespace std;
 				cin>>armySelection;
 			}
 			if(armySelection!=0){
-				if(Given.deploy(armySelection)){
+				if(Given.arena(armySelection)){
 				cout<<"Personality added to Battle Force"<<endl;
-			}else{
-				cout<<"Personality already added"<<endl;
 			}
 			}
 		}while(armySelection!=0);
 
-		if(Given.isDeployedEmpty()==false){
+		if(Given.isArenaEmpty()==false){
 		cout<<"Do you want to attack? Y/N"<<endl;
 		cin>>input;
 		if(input=="Y"||input=="y"){
@@ -114,9 +119,11 @@ using namespace std;
 		cin>>provinceSelection;
 		}
 		cout<<"Province Selected"<<endl;
-		attackScore=Given.getDeployedAttack();
-		defenceScore=Players.at(selection-1)->getDeployedDefence();
+		attackScore=Given.getArenaAttack();
+		defenceScore=Players.at(selection-1)->getArenaDefence();
 		defenceScore+=Players.at(selection-1)->getKeepDefence();
+		cout<<"Attack Score"<<attackScore<<endl;
+		cout<<"Defence Score"<<defenceScore<<endl;
 		if(attackScore>defenceScore){
 			cout<<"Victory: Province Destroyed"<<endl;
 			Players.at(selection-1)->killProvince(provinceSelection);
@@ -168,6 +175,7 @@ using namespace std;
 		cout<<"ENDING ECONOMY PHASE"<<endl;
 	};
 	void Phases::finalPhase(Player& Given){
+		cout<<"FINAL PHASE"<<endl;
 		Given.discardSurplusFateCards();
 		//Print statistics
 		cout<<endl<<"Press ENTER to end your turn..."<<endl;

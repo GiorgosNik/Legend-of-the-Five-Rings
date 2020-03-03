@@ -13,7 +13,7 @@
 using namespace std;
 
 
-Player::Player(int cardsAtHand,string name):Name(name),maxHand(cardsAtHand){
+Player::Player(int cardsAtHand,string name):Name(name),maxAtHand(cardsAtHand){
 deck=new DeckBuilder;
 fateDeck=deck->createFateDeck();
 dynastyDeck=deck->createDynastyDeck();
@@ -29,7 +29,7 @@ for(int i=0;i<4;i++){
 }
 void Player::discardSurplusFateCards(){
 	while(handCards.size()>maxAtHand){
-		handCards.erase(handCards.begin()+maxAtHand+1);
+		handCards.erase(handCards.begin()+maxAtHand);
 	}
 }
 
@@ -111,11 +111,14 @@ void Player::untapEverything(){
 				return 1;
 			}
 			Army.at(armyNum-1)->giveItem(*converter.getItem(handCards.at(handNum-1)));
+			handCards.erase(handCards.begin()+handNum-1);
+			return 3;
 		}else{
 			if(Army.at(armyNum-1)->getFollowerNumber()==false){
 				return 2;
 			}
 			Army.at(armyNum-1)->giveFollower(*converter.getFollower(handCards.at(handNum-1)));
+			handCards.erase(handCards.begin()+handNum-1);
 			return 3;
 		}
 
@@ -146,8 +149,8 @@ void Player::untapEverything(){
 	void Player::printName(){
 		cout<<Name;
 	}
-bool Player::isDeployedEmpty(){
-	return (Deployed.size()==0);
+bool Player::isArenaEmpty(){
+	return (Arena.size()==0);
 }
 	void Player::printProvinces(){
 		cout<<"Provinces: "<<endl;
@@ -245,8 +248,8 @@ int Player::getProvinceCost(int selection){
 	}
 	bool Player::upgradeHand(int handNum){
 		handNum--;
-		if(payment(handCards.at(handNum-1)->getCost())){
-			handCards.at(handNum-1)->giveBonus();
+		if(payment(handCards.at(handNum)->getEffectCost())){
+			handCards.at(handNum)->giveBonus();
 			return true;
 		}else{
 			return false;
@@ -255,28 +258,23 @@ int Player::getProvinceCost(int selection){
 	int Player::getProvinceNumber(){
 		return provinces.size();
 	}
-	bool Player::deploy(int selection){
-		int i=0;
-		int j=0;
+	bool Player::arena(int selection){
 		selection--;
-		while(j<selection){
-			if(Army.at(i)->getIsTapped()==false){
-				j++;
-			}else{
-				i++;
-			}
-
+		if(Army.at(selection)->getIsTapped()){
+			cout<<"Cant add this, it is Taped"<<endl;
+			return false;
 		}
-		for(int k=0;k<Deployed.size();k++){
-			if(Army.at(i)==Deployed.at(k)){
+		for(int k=0;k<Arena.size();k++){
+			if(Army.at(selection)==Arena.at(k)){
+				cout<<"Personality Already Arena."<<endl;
 				return false;
 			}
 		}
-		Deployed.push_back(Army.at(i));
+		Arena.push_back(Army.at(selection));
 		return true;
 	}
-	void Player::undeploy(){
-		Deployed.clear();
+	void Player::unarena(){
+		Arena.clear();
 	}
 	int Player::getUnTappedNumber(){
 		int	num;
@@ -287,22 +285,17 @@ int Player::getProvinceCost(int selection){
 		}
 		return num;
 	}
-	int Player::getDeployedAttack(){
+	int Player::getArenaAttack(){
 		int sum=0;
-		if(Deployed.empty()){
-		}
-		return 0;
-		for(int i=0;i<Deployed.size();i++){
-			sum+=Deployed.at(i)->getAttack();
+		for(int i=0;i<Arena.size();i++){
+			sum+=Arena.at(i)->getAttack();
 		}
 		return sum;
 	}
-	int Player::getDeployedDefence(){
+	int Player::getArenaDefence(){
 		int sum=0;
-		if(Deployed.empty())
-		return 0;
-		for(int i=0;i<Deployed.size();i++){
-			sum+=Deployed.at(i)->getDefence();
+		for(int i=0;i<Arena.size();i++){
+			sum+=Arena.at(i)->getDefence();
 		}
 		return sum;
 	}
@@ -310,8 +303,8 @@ int Player::getProvinceCost(int selection){
 		return Keep->getDefence();
 	}
 	void Player::killArmy(){
-		for(int i=0;i<Deployed.size();i++){
-			Deployed.at(i)->setDeath();
+		for(int i=0;i<Arena.size();i++){
+			Arena.at(i)->setDeath();
 		}
 	}
 	void Player::killProvince(int toKill){
@@ -321,17 +314,17 @@ int Player::getProvinceCost(int selection){
 	}
 	void Player::killAtLeast(int points){
 		int i=0;
-		while(i<Deployed.size()&&points>0){
-			points=Deployed.at(i)->removeAtLeast(points);
+		while(i<Arena.size()&&points>0){
+			points=Arena.at(i)->removeAtLeast(points);
 			if(points>0){
-				Deployed.at(i)->setDeath();
+				Arena.at(i)->setDeath();
 			}
 			i++;
 		}
 	}
 	void Player::loseAttack(){
-		for(int i=0;i<Deployed.size();i++){
-			Deployed.at(i)->defeat();
+		for(int i=0;i<Arena.size();i++){
+			Arena.at(i)->defeat();
 		}
 	}
 	void Player::removeDead(){
