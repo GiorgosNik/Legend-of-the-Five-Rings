@@ -14,7 +14,7 @@ class Personality:public BlackCard{
 	int honour;
 	bool isAlive;
 	vector <Follower*> Retinue;
-	vector <Item*> Arsenal;	
+	vector <Item*> Arsenal;
 	public:
 		Personality(int GivenCost,string GivenName,int givenAttack,int givenDefence,int givenHonour);
 		Personality(const Personality& Copy);

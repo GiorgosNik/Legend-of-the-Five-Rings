@@ -13,6 +13,6 @@ class BlackCard:public Card{
 		virtual void print();
 		void reveal();
 		virtual int getType()=0;
-		
+
 };
 #endif		//BLACK

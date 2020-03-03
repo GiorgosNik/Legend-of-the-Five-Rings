@@ -21,7 +21,7 @@ void GameBoard::initializeGameBoard(){
 			players.push_back(tempPlayer);
 			tempPlayer=NULL;
 		}
-    }    
+    }
 void GameBoard::gameplay(){
 	cout<<"Press ENTER to start Game."<<endl;
 	Player* current,*temp;
@@ -47,11 +47,20 @@ void GameBoard::gameplay(){
 	}
 }
 void GameBoard::playPhases(Player& toPlay){
+  if(toPlay.getProvinceNumber()>0){
 	cout<<"Player: ";toPlay.printName();cout<<endl;
 	startingPhase(toPlay);
 	equipPhase(toPlay);
 	battlePhase(toPlay,players);
 	economyPhase(toPlay);
 	finalPhase(toPlay);
+  checkWinningCondition(toPlay);
+}else{
+  cout<<"Player ";toPlay.printName();cout<<" has run out of provinces, moving on to next player."<<endl;
 }
+}
+bool GameBoard::checkWinningCondition(Player& toPlay){
+  if(toPlay.getProvinceNumber()>0){
 
+  }
+}

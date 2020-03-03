@@ -28,7 +28,7 @@ void Personality::print(){
 			Arsenal.at(i)->print();
 		}
 	}
-	
+
 }
 void Personality::detach(Item* toRemove){
 	int i=0;

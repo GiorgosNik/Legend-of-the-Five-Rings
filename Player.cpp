@@ -13,7 +13,7 @@
 using namespace std;
 
 
-Player::Player(int cardsAtHand,string name):Name(name){
+Player::Player(int cardsAtHand,string name):Name(name),maxHand(cardsAtHand){
 deck=new DeckBuilder;
 fateDeck=deck->createFateDeck();
 dynastyDeck=deck->createDynastyDeck();
@@ -27,6 +27,11 @@ for(int i=0;i<4;i++){
 	provinces.push_back(drawDynastyCard());
 }
 }
+void Player::discardSurplusFateCards(){
+	while(handCards.size()>maxAtHand){
+		handCards.erase(handCards.begin()+maxAtHand+1);
+	}
+}
 
 int Player::getHonour(){
     return honour;
@@ -39,7 +44,7 @@ void Player::setHonour(){
 void Player::drawFateCard(){
 	if(fateDeck->empty()==false){
 		handCards.push_back(fateDeck->back());
-    	fateDeck->pop_back();        
+    	fateDeck->pop_back();
 	}else{
 		cout<<"You run out of cards..."<<endl;	//Model Later
 	}
@@ -77,6 +82,7 @@ void Player::untapEverything(){
 		balance=0;
 	}
 	void Player::printHandNumbered(){
+		cout<<endl;
 		for(int i=0;i<handCards.size();i++){
 			cout<<i+1<<": ";
 			handCards.at(i)->print();
@@ -112,7 +118,7 @@ void Player::untapEverything(){
 			Army.at(armyNum-1)->giveFollower(*converter.getFollower(handCards.at(handNum-1)));
 			return 3;
 		}
-		
+
 	}
 	void Player::printTappedArmyNumbered(){
 		int j=1;
@@ -147,7 +153,7 @@ bool Player::isDeployedEmpty(){
 		cout<<"Provinces: "<<endl;
 		for(int i=0;i<provinces.size();i++){
 			if(provinces.at(i)->getIsTapped()==false){
-			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;	
+			cout<<i+1<<": ";provinces.at(i)->printName();cout<<endl;
 			}else{
 				cout<<i+1<<": Province is hidden"<<endl;
 			}
@@ -203,7 +209,7 @@ void Player::buyProvince(int selection)	{
 		Army.push_back(converter.getPersonality(provinces.at(selection)));
 	}
 	provinces.at(selection)=drawDynastyCard();
-	
+
 }
 int Player::getProvinceCost(int selection){
 	selection--;
@@ -234,7 +240,7 @@ int Player::getProvinceCost(int selection){
 				}
 			}
 		}
-		cout<<"Unable to pay cost: "<<startingCost;
+		cout<<"Unable to pay cost: "<<startingCost<<endl;
 		return false;
 	}
 	bool Player::upgradeHand(int handNum){
@@ -259,13 +265,13 @@ int Player::getProvinceCost(int selection){
 			}else{
 				i++;
 			}
-			
+
 		}
 		for(int k=0;k<Deployed.size();k++){
 			if(Army.at(i)==Deployed.at(k)){
 				return false;
 			}
-		}	
+		}
 		Deployed.push_back(Army.at(i));
 		return true;
 	}
@@ -339,5 +345,3 @@ int Player::getProvinceCost(int selection){
 	GreenCard* Player::getCardAt(int index){
 		return handCards.at(index-1);
 	}
-
-

@@ -1,4 +1,4 @@
-#include "Deckbuilder.hpp"
+#include "DeckBuilder.hpp"
 #include <list>
 #include "BlackCard.hpp"
 #include "GreenCard.hpp"
@@ -13,5 +13,3 @@ int main(){
 	toPlay.gameplay();
 	return 0;
 }
-
-

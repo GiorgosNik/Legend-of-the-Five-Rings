@@ -23,7 +23,7 @@ void Archer::print(){
 	cout<<"Type: Archer";
 	Card::print();
 	GreenCard::print();
-	cout<<endl;
+	cout<<endl<<endl;
 }
 void Sieger::print(){
 	cout<<"Type: Sieger";
@@ -49,5 +49,3 @@ void Bushido::print(){
 	GreenCard::print();
 	cout<<endl;
 }
-
-

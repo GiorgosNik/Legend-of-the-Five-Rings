@@ -15,12 +15,13 @@ string Card::getName(){
 	return Name;
 }
 void Card::print(){
-	cout<<"Name: "<<Name<<" Cost: "<<Cost<<" Tapped: ";
+	cout<<"  Name: "<<Name<<"  Cost: "<<Cost<<"  Tapped: ";
 	if(isTapped){
 		cout<<"Yes ";
 	}else{
 		cout<<"No ";
 	}
+	cout<<endl;
 }
 void Card::untap(){
 	isTapped=false;
