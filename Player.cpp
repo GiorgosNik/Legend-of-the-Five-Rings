@@ -84,7 +84,7 @@ void Player::untapEverything(){
 	void Player::resetCashPool(){
 		balance=0;
 	}
-	void Player::printHandNumbered(){
+	void Player::printHand(){
 		cout<<endl;
 		for(int i=0;i<handCards.size();i++){
 			cout<<i+1<<": ";
@@ -219,6 +219,21 @@ void Player::buyProvince(int selection)	{
 	}
 	provinces.at(selection)=drawDynastyCard();
 
+}
+void Player::printArena(){
+	for(int i=0;i<Arena.size();i++){
+		Arena.at(i)->print();
+	}
+}
+void Player::printHoldings(){
+	for(int i=0;i<Holdings.size();i++){
+		Holdings.at(i)->print();
+	}
+}
+void Player::printGameStatistics(){
+	cout<<"Has "<<getProvinceNumber()<<" provinces."<<endl;
+	cout<<"Has "<<Holdings.size()<<" Holdings"<<endl;
+	cout<<"Has "<<Army.size()<<" in his Army, of which "<<Arena.size()<<" are in the Arena"<<endl;
 }
 int Player::getProvinceCost(int selection){
 	selection--;

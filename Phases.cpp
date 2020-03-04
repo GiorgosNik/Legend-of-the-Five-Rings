@@ -6,21 +6,23 @@
 using namespace std;
 
 	void Phases::startingPhase(Player& Given){
+		cout<<"###############################################################"<<endl;
 		cout<<endl<<"STARTING  PHASE"<<endl;
 		Given.untapEverything();
 		Given.drawFateCard();
 		Given.revealProvinces();
 		Given.printProvinces();
-		Given.printHandNumbered();
+		Given.printHand();
 		Given.resetCashPool();
 		Given.unarena();
 	}
 	void Phases::equipPhase(Player& Given){
+		cout<<"###############################################################"<<endl;
 		cout<<endl<<"EQUIP PHASE"<<endl;
 		int handNum,armyNum,rez;
 		string input;
 		if(Given.isArmyEmpty()==false){
-			Given.printHandNumbered();
+			Given.printHand();
 			cout<<"Select a Fate Card with the displayed number, select 0 to exit"<<endl;
 			cin>>handNum;									//Select Green Card
 			while(handNum<0||handNum>Given.getHandSize()){	//Input Guard for handNum
@@ -58,7 +60,7 @@ using namespace std;
 			}else{
 				cout<<"Not enought funds"<<endl;
 			}
-			Given.printHandNumbered();
+			Given.printHand();
 			cout<<"Select a Fate Card with the displayed number, select 0 to exit"<<endl;
 			cin>>handNum;									//Select Green Card
 			while(handNum<0||handNum>Given.getHandSize()){	//Input Guard for handNum
@@ -73,6 +75,7 @@ using namespace std;
 		}
 	}
 	void Phases::battlePhase(Player& Given,vector<Player*>& Players){
+		cout<<"###############################################################"<<endl;
 		cout<<endl<<"BATTLE PHASE"<<endl;
 		int selection,provinceSelection,armySelection,attackScore,defenceScore;
 		string input;
@@ -153,6 +156,7 @@ using namespace std;
 	}
 	}
 	void Phases::economyPhase(Player& Given){
+		cout<<"###############################################################"<<endl;
 		int selection;
 		cout<<endl<<"ECONOMY PHASE"<<endl;
 		do{
@@ -173,10 +177,20 @@ using namespace std;
 		}while(selection!=0);
 		cout<<"ENDING ECONOMY PHASE"<<endl;
 	};
-	void Phases::finalPhase(Player& Given){
+	void Phases::finalPhase(Player& Given,vector<Player*>& players){
+		cout<<"###############################################################"<<endl;
 		cout<<"FINAL PHASE"<<endl;
 		Given.discardSurplusFateCards();
-		//Print statistics
+		for(int i=0;i<players.size();i++){
+			cout<<"Stats for Player: ";players.at(i)->printName();cout<<endl;
+			players.at(i)->printGameStatistics();
+			cout<<"Provinces:"<<endl;
+			players.at(i)->printProvinces();
+			cout<<"Hand: "<<endl;
+			players.at(i)->printHand();
+			cout<<"Holdings:"<<endl;
+			players.at(i)->printHoldings();
+		}
 		cout<<endl<<"Press ENTER to end your turn..."<<endl;
 		cin.get();
 	}

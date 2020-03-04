@@ -38,9 +38,12 @@ public:
   BlackCard* drawDynastyCard();
   void buyProvince(int selection);
   bool isArmyEmpty();
+  void printArena();
+  void printHoldings();
+  void printGameStatistics();
 	void resetCashPool();
 	bool isArenaEmpty();
-	void printHandNumbered();
+	void printHand();
 	int getHandSize();
 	void printArmyNumbered();
 	int getArmySize();

@@ -8,5 +8,5 @@ namespace Phases{
 	void equipPhase(Player& Given);
 	void battlePhase(Player& Given,vector<Player*>& Players);
 	void economyPhase(Player& Given);
-	void finalPhase(Player& Given);
+	void finalPhase(Player& Given,vector<Player*>& Players);
 };

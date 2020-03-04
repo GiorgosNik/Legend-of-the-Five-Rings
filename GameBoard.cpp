@@ -61,7 +61,7 @@ bool GameBoard::playPhases(Player& toPlay){
 	equipPhase(toPlay);
 	battlePhase(toPlay,players);
 	economyPhase(toPlay);
-	finalPhase(toPlay);
+	finalPhase(toPlay,players);
   	return checkWinningCondition(toPlay);
 }else{
   cout<<"Player ";toPlay.printName();cout<<" has run out of provinces, moving on to next player."<<endl;
