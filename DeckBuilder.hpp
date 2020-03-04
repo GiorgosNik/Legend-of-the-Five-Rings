@@ -28,12 +28,12 @@
 #define NO_CHAMPION       1
 
 #define NO_HOLDINGS       17
-#define NO_PLAIN          1
-#define NO_MINE           5
-#define NO_GOLD_MINE      5
-#define NO_CRYSTAL_MINE   4
-#define NO_FARMS          1
-#define NO_SOLO           1
+#define NO_PLAIN          3
+#define NO_MINE           3
+#define NO_GOLD_MINE      3
+#define NO_CRYSTAL_MINE   2
+#define NO_FARMS          3
+#define NO_SOLO           2
 
 #define NO_FOLLOWERS      28
 #define NO_FOOTSOLDIER    6

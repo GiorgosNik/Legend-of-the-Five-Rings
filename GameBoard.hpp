@@ -1,7 +1,7 @@
 #ifndef	GAMEBOARD
 #define GAMEBOARD
 #include <iostream>
-#include "Player.hpp"
+class Player;
 using namespace std;
 
 class GameBoard{
@@ -9,6 +9,7 @@ private:
 	vector<Player*> players;
 public:
     GameBoard();
+    ~GameBoard();
     void initializeGameBoard();
     void gameplay();
     bool playPhases(Player& toPlay);

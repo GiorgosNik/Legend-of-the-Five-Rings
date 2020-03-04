@@ -164,7 +164,6 @@ using namespace std;
 				cin>>selection;
 			}
 			if(selection!=0){
-
 			if(Given.provinceIsTapped(selection)==false){
 			if(Given.payment(Given.getProvinceCost(selection))){
 				Given.buyProvince(selection);

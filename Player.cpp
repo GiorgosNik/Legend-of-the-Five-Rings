@@ -27,6 +27,9 @@ for(int i=0;i<4;i++){
 	provinces.push_back(drawDynastyCard());
 }
 }
+Player::~Player(){
+	delete deck;
+}
 void Player::discardSurplusFateCards(){
 	while(handCards.size()>maxAtHand){
 		handCards.erase(handCards.begin()+maxAtHand);
@@ -172,6 +175,7 @@ void Player::buyProvince(int selection)	{
 		}else{
 			cout<<"New Holding might be able to form a chain."<<endl<<"Atemtping Now..."<<endl;
 			if(Holdings.back()->getMineType()==MINE){		//New Holding is of type MINE
+			cout<<"Searching for Gold Mine"<<endl;
 				for(int i =0;i<Holdings.size()-1;i++){
 					if(Holdings.at(i)->getMineType()==GOLDMINE&&Holdings.at(i)->canChainLow()){
 						Holdings.at(i)->giveLow(Holdings.back());
@@ -181,7 +185,8 @@ void Player::buyProvince(int selection)	{
 					}
 				}
 			}else if(Holdings.back()->getMineType()==GOLDMINE){
-				for(int i =0;i<Holdings.size()-1;i++){
+				cout<<"Searching for Mine or Crystal Mine"<<endl;
+				for(int i=0;i<Holdings.size()-1;i++){
 					if(Holdings.at(i)->getMineType()==CRYSTALMINE&&Holdings.at(i)->canChainLow()){
 						Holdings.at(i)->giveLow(Holdings.back());
 						Holdings.back()->giveUpper(Holdings.at(i));
@@ -198,6 +203,7 @@ void Player::buyProvince(int selection)	{
 					}
 				}
 			}else{
+				cout<<"Searching for Gold Mine"<<endl;
 				for(int i =0;i<Holdings.size()-1;i++){
 					if(Holdings.at(i)->getMineType()==GOLDMINE&&Holdings.at(i)->canChainUp()){
 						Holdings.at(i)->giveUpper(Holdings.back());

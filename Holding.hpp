@@ -19,8 +19,8 @@ class Holding:public BlackCard{
 		Holding* getUpperHolding();
 		int getType();
 		virtual int getMineType();
-		bool canChainUp();
-		bool canChainLow();
+		virtual bool canChainUp();
+		virtual bool canChainLow();
 		virtual void print();
 };
 class GiftsandFavour:public Holding{

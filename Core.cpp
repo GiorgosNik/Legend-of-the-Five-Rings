@@ -3,7 +3,6 @@
 #include "BlackCard.hpp"
 #include "GreenCard.hpp"
 #include <iostream>
-#include "Player.hpp"
 #include "Phases.hpp"
 #include "GameBoard.hpp"
 using namespace std;

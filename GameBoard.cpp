@@ -2,9 +2,15 @@
 #include "Player.hpp"
 #include "GameBoard.hpp"
 #include "Phases.hpp"
+#include "Player.hpp"
 using namespace Phases;
 using namespace std;
   GameBoard::GameBoard(){}
+ GameBoard::~GameBoard(){
+  	for(int i=0;i<players.size();i++){
+  		delete players.at(i);
+	  }
+  }
 void GameBoard::initializeGameBoard(){
 		cout<<"Seting up Game Board..."<<endl;
     	int playerNum,handCards;

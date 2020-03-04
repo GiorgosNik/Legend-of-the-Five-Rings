@@ -17,8 +17,6 @@ private:
     DeckBuilder* deck;
     list<GreenCard*>* fateDeck;
     list<BlackCard*>* dynastyDeck;
-    vector<BlackCard*>* dynastyDeckVector;
-    vector<GreenCard*>* fateDeckVector;
     vector<GreenCard*> handCards;
     vector<BlackCard*> provinces;
     vector<Holding*>	Holdings;
@@ -29,6 +27,7 @@ private:
     void setHonour();
 public:
   Player(int cardsAtHand,string name);
+  ~Player();
   void printName();
   void revealProvinces();
   int getHonour();
