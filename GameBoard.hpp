@@ -14,5 +14,6 @@ public:
     void gameplay();
     bool playPhases(Player& toPlay);
 	bool checkWinningCondition(Player& toPlay);
+    void enterToContinue();
 };
 #endif	//GAMEBOARD

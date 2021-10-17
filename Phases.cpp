@@ -6,7 +6,7 @@
 using namespace std;
 
 	void Phases::startingPhase(Player& Given){
-		cout<<"###############################################################"<<endl;
+		cout<<"###############################################################\n"<<endl;
 		cout<<endl<<"STARTING  PHASE"<<endl;
 		Given.untapEverything();
 		Given.drawFateCard();
@@ -17,7 +17,7 @@ using namespace std;
 		Given.unarena();
 	}
 	void Phases::equipPhase(Player& Given){
-		cout<<"###############################################################"<<endl;
+		cout<<"###############################################################\n"<<endl;
 		cout<<endl<<"EQUIP PHASE"<<endl;
 		int handNum,armyNum,rez;
 		string input;
@@ -75,7 +75,7 @@ using namespace std;
 		}
 	}
 	void Phases::battlePhase(Player& Given,vector<Player*>& Players){
-		cout<<"###############################################################"<<endl;
+		cout<<"###############################################################\n"<<endl;
 		cout<<endl<<"BATTLE PHASE"<<endl;
 		int selection,provinceSelection,armySelection,attackScore,defenceScore;
 		string input;
@@ -156,7 +156,7 @@ using namespace std;
 	}
 	}
 	void Phases::economyPhase(Player& Given){
-		cout<<"###############################################################"<<endl;
+		cout<<"###############################################################\n"<<endl;
 		int selection;
 		cout<<endl<<"ECONOMY PHASE"<<endl;
 		do{
@@ -178,7 +178,7 @@ using namespace std;
 		cout<<"ENDING ECONOMY PHASE"<<endl;
 	};
 	void Phases::finalPhase(Player& Given,vector<Player*>& players){
-		cout<<"###############################################################"<<endl;
+		cout<<"###############################################################\n"<<endl;
 		cout<<"FINAL PHASE"<<endl;
 		Given.discardSurplusFateCards();
 		for(int i=0;i<players.size();i++){
@@ -191,6 +191,6 @@ using namespace std;
 			cout<<"Holdings:"<<endl;
 			players.at(i)->printHoldings();
 		}
-		cout<<endl<<"Press ENTER to end your turn..."<<endl;
+		cout<<endl<<"Press ENTER to end your turn...\n"<<endl;
 		cin.get();
 	}

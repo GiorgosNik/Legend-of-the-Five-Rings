@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "Player.hpp"
 #include "GameBoard.hpp"
 #include "Phases.hpp"
@@ -57,15 +58,21 @@ void GameBoard::gameplay(){
 bool GameBoard::playPhases(Player& toPlay){
   if(toPlay.getProvinceNumber()>0){
 	cout<<"Player: ";toPlay.printName();cout<<endl;
+	fflush(stdin);
 	startingPhase(toPlay);
+	enterToContinue();
 	equipPhase(toPlay);
+	enterToContinue();
 	battlePhase(toPlay,players);
+	enterToContinue();
 	economyPhase(toPlay);
+	enterToContinue();
 	finalPhase(toPlay,players);
-  	return checkWinningCondition(toPlay);
 }else{
   cout<<"Player ";toPlay.printName();cout<<" has run out of provinces, moving on to next player."<<endl;
 }
+  	return checkWinningCondition(toPlay);
+
 }
 bool GameBoard::checkWinningCondition(Player& toPlay){
 	int j=0;
@@ -81,4 +88,8 @@ bool GameBoard::checkWinningCondition(Player& toPlay){
 		}
   }
   return false;
+}
+void GameBoard::enterToContinue(){
+	cout << "Press Enter to Continue\n";
+	cin.ignore(std::numeric_limits<streamsize>::max(),'\n');
 }
