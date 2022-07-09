@@ -12,7 +12,7 @@ all: BlackCard.cpp BlackCard.hpp GreenCard.cpp GreenCard.hpp Card.cpp Card.hpp C
 		g++ -c -std=c++11 GameBoard.cpp
 		g++ -c -std=c++11 TypeConverter.cpp
 		g++ -c -std=c++11 Player.cpp
-		g++ -o Final.exe -std=c++11 Core.cpp Card.o BlackCard.o GreenCard.o Item.o Follower.o Holding.o Personality.o Stronghold.o DeckBuilder.o Phases.o GameBoard.o TypeConverter.o Player.o
+		g++ -o game -std=c++11 Core.cpp Card.o BlackCard.o GreenCard.o Item.o Follower.o Holding.o Personality.o Stronghold.o DeckBuilder.o Phases.o GameBoard.o TypeConverter.o Player.o
 
 clean:
 	rm Card.o BlackCard.o GreenCard.o Item.o Follower.o Holding.o Personality.o Stronghold.o DeckBuilder.o Phases.o GameBoard.o TypeConverter.o Player.o
